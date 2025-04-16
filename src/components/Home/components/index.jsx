@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import useHome from '../hooks/useHome';
 import Banner from './banner';
-import { motion } from "framer-motion";
+//import { motion } from "framer-motion";
 
 const CasinoSection = dynamic(() => import('./CasinoSection'), {
   ssr: false,

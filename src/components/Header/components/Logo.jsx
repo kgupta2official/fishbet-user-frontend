@@ -7,14 +7,14 @@ import fishbetlogo from "../../../../public/assets/logoImage.png.png"
 
 function Logo() {
   const { push } = useRouter();
-  const [logoUrl, setLogoUrl] = useState('');
+  //const [logoUrl, setLogoUrl] = useState('');
 
   useEffect(() => {
     async function fetchLogo() {
       try {
         const siteDetails = await getSiteDetails();
         console.log('API Response:', siteDetails?.data?.tenantDetail?.logo); 
-        setLogoUrl(siteDetails?.data?.tenantDetail?.logo || '');
+        //setLogoUrl(siteDetails?.data?.tenantDetail?.logo || '');
       } catch (error) {
         console.error('Error fetching site details:', error);
       }
