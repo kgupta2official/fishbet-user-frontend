@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { getSiteDetails } from '@/services/getRequests';
-import fishbetlogo from "../../../../public/assets/logoImage.png.png"
+import fishbetlogo from '../../../../public/assets/logoImage.png.png';
 
 function Logo() {
   const { push } = useRouter();
