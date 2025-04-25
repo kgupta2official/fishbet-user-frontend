@@ -137,7 +137,7 @@ const useUserAuth = ({ setOpen, isSignUp = false, setToastState, onSuccess = () 
         message: `${isSignUp ? 'Signed Up' : 'Logged In'} Successfully`,
         status: 'success',
       });
-      onSuccess()
+      onSuccess();
       navigate('/');
     } catch (error) {
       setLoading(false);

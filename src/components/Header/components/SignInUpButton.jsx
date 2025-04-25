@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import Link from "next/link"
+import Link from 'next/link';
 
 const SignInUpButton = () => {
     
@@ -15,6 +15,6 @@ const SignInUpButton = () => {
                 </Link>
             </div>
         </>
-    )
-}
-export default SignInUpButton
+    );
+};
+export default SignInUpButton;

@@ -14,7 +14,7 @@ import Header from '../../components/Header/components';
 import SidebarSection from '../../components/SidebarSection';
 import initTranslations from '../i18n';
 import ChatModule from './@chat/page';
-import LoginSignup from './@login/page';
+//import LoginSignup from './@login/page';
 import './global.scss';
 import './global.css';
 import NextTopLoader from 'nextjs-toploader';
