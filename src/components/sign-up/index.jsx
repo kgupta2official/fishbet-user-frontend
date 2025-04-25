@@ -811,7 +811,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import FishbetLogo from "../../../public/assets/logoImage-removebg.png"
+import FishbetLogo from '../../../public/assets/logoImage-removebg.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
@@ -821,14 +821,14 @@ const SignUp = () => {
    const [step, setStep] = useState(0);
    const router = useRouter();
    const [formData, setFormData] = useState({
-      username: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      country: "United States",
-      state: "",
-      dob: { month: "", day: "", year: "" },
-      referredBy: ""
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      country: 'United States',
+      state: '',
+      dob: { month: '', day: '', year: '' },
+      referredBy: ''
    });
    const [showPassword, setShowPassword] = useState(false);
 
@@ -841,15 +841,15 @@ const SignUp = () => {
    useEffect(() => {
       if (step === 3) {
          const timer = setTimeout(() => {
-            router.push("/");
+            router.push('/');
          }, 3000);
          return () => clearTimeout(timer);
       }
    }, [step, router]);
 
    const nextStep = (value, idx) => {
-      console.log("value", value);
-      console.log("idx", idx);
+      console.log('value', value);
+      console.log('idx', idx);
 
       if (step === 0) {
          setFormData((prev) => ({
@@ -1009,7 +1009,7 @@ const SignUp = () => {
                               </div>
                               <div className="relative mt-input-root styles_input__F0jYD mt-[20px]">
                                  <Field
-                                    type={showPassword ? "text" : "password"}
+                                    type={showPassword ? 'text' : 'password'}
                                     name="password"
                                     autoComplete="off"
                                     placeholder="Password"
