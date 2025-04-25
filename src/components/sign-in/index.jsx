@@ -305,7 +305,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import FishbetLogo from "../../../public/assets/logoImage-removebg.png";
+import FishbetLogo from '../../../public/assets/logoImage-removebg.png';
 import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
 import { useState } from 'react';
 import { eye, eyeOff } from '@/assets/svg';
@@ -398,7 +398,7 @@ const SignIn = () => {
                   </div>
                   <div className="relative mt-input-root styles_input__F0jYD mt-[20px]">
                      <Field
-                        type={showPassword ? "text" : "password"}
+                        type={showPassword ? 'text' : 'password'}
                         name="password"
                         autoComplete="off"
                         placeholder="Password"
