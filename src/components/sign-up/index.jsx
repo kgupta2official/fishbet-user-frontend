@@ -1,3 +1,4 @@
+'use client'
 // 'use client'
 // import { useEffect, useState } from 'react';
 // import { useRouter } from 'next/navigation';
@@ -803,17 +804,13 @@
 // };
 
 // export default SignUp;
-
-
-
-'use client'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import FishbetLogo from "../../../public/assets/logoImage-removebg.png"
+import FishbetLogo from "../../../public/assets/logoImage-removebg.png";
 import Image from 'next/image';
 import Link from 'next/link';
 import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';

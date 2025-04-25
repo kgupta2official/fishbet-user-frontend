@@ -310,7 +310,6 @@ import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
 import { useState } from 'react';
 import { eye, eyeOff } from '@/assets/svg';
 import { forgotPassword } from '@/services/postRequest';  
-import { toast } from 'react-hot-toast';
 
 const SignIn = () => {
    const router = useRouter();
