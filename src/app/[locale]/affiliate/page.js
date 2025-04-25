@@ -1,8 +1,6 @@
-import dynamic from 'next/dynamic';
+'use client';
 
-const Affiliate = dynamic(() => import('@/components/affiliate/components'), {
-  ssr: false,
-});
+import Affiliate from '@/components/affiliate/components';
 
 export default function Page() {
   return <Affiliate />;
