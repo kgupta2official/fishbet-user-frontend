@@ -20,6 +20,8 @@ import {
 import Image from 'next/image';
 import { panelLeft } from '@/assets/svg';
 import { useStateContext } from '@/store';
+import { useState } from 'react';
+import useUserAuth from '../LoginSignup/hooks/useUserAuth';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_NAME_RIGHT = 'sidebar:stateRight';
@@ -253,57 +255,64 @@ const Sidebar = React.forwardRef(
       );
     }
 
+    // const [open, setOpen] = useState(false);
+    // const { isLoggedIn } = useUserAuth({ setOpen });
+
+
     return (
-      <div
-        ref={ref}
-        className="group peer hidden md:block text-sidebar-foreground overlap-chat"
-        data-state={side === 'right' ? stateRight : state}
-        data-collapsible={
-          side === 'right'
-            ? stateRight === 'collapsed'
-              ? collapsible
-              : ''
-            : state === 'collapsed'
-              ? collapsible
-              : ''
-        }
-        data-variant={variant}
-        data-side={side}
-        style={{ '--sidebar-width': width }}
-      >
-        {/* This is what handles the sidebar gap on desktop */}
-        <div
-          className={cn(
-            'duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear',
-            'group-data-[collapsible=offcanvas]:w-0',
-            'group-data-[side=right]:rotate-180',
-            variant === 'floating' || variant === 'inset'
-              ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
-              : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]'
-          )}
-        />
-        <div
-          className={cn(
-            'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
-            side === 'left'
-              ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
-              : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
-            // Adjust the padding for floating and inset variants.
-            variant === 'floating' || variant === 'inset'
-              ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
-              : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-0 group-data-[side=right]:border-0',
-            className
-          )}
-          {...props}
+      <>
+        {/* {!isLoggedIn && */}
+         <div
+          ref={ref}
+          className="group peer hidden md:block text-sidebar-foreground overlap-chat"
+          data-state={side === 'right' ? stateRight : state}
+          data-collapsible={
+            side === 'right'
+              ? stateRight === 'collapsed'
+                ? collapsible
+                : ''
+              : state === 'collapsed'
+                ? collapsible
+                : ''
+          }
+          data-variant={variant}
+          data-side={side}
+          style={{ '--sidebar-width': width }}
         >
           <div
-            data-sidebar="sidebar"
-            className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+            className={cn(
+              'duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear',
+              'group-data-[collapsible=offcanvas]:w-0',
+              'group-data-[side=right]:rotate-180',
+              variant === 'floating' || variant === 'inset'
+                ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
+                : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]'
+            )}
+          />
+          <div
+            className={cn(
+              'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
+              side === 'left'
+                ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
+                : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
+              // Adjust the padding for floating and inset variants.
+              variant === 'floating' || variant === 'inset'
+                ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
+                : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-0 group-data-[side=right]:border-0',
+              className
+            )}
+            {...props}
           >
-            {children}
+            <div
+              data-sidebar="sidebar"
+              className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+            >
+              {children}
+            </div>
           </div>
         </div>
-      </div>
+        {/* } */}
+      </>
     );
   }
 );
@@ -372,15 +381,13 @@ const SidebarInset = React.forwardRef(({ className, ...props }, ref) => {
       className={cn(
         'relative flex min-h-svh flex-grow flex-col bg-background md:ml-[72px] lg:ml-0',
         'peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow w-[calc(100%-72px)] lg:max-w-full',
-        `peer-data-[state=collapsed]:${
-          state.rightPanel
-            ? 'lg:w-[calc(100%-72px)]'
-            : 'lg:w-[calc(100%-424px)]'
+        `peer-data-[state=collapsed]:${state.rightPanel
+          ? 'lg:w-[calc(100%-72px)]'
+          : 'lg:w-[calc(100%-424px)]'
         }`,
-        `${
-          state.rightPanel
-            ? 'lg:w-[calc(100%-240px)]'
-            : 'lg:w-[calc(100%-592px)]'
+        `${state.rightPanel
+          ? 'lg:w-[calc(100%-240px)]'
+          : 'lg:w-[calc(100%-592px)]'
         }`,
         className
       )}
@@ -631,7 +638,7 @@ const SidebarMenuAction = React.forwardRef(
           'peer-data-[size=lg]/menu-button:top-2.5',
           'group-data-[collapsible=icon]:hidden',
           showOnHover &&
-            'group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0',
+          'group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0',
           className
         )}
         {...props}

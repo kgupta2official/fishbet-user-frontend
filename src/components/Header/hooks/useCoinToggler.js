@@ -11,15 +11,11 @@ const useCoinToggler = (setCurrency = () => {}) => {
     dispatch,
   } = useStateContext();
 
-  console.log('user>>>' , user);
-
   const hadleToggle = (value) => {
-    console.log('value>>>>' , value);
     dispatch({ type: 'SET_SELECTED_COIN', payload: value });
   };
 
   const getBalance = (code) => {
-    console.log('code>>>' , code);
     const wallet = user?.userWallet?.find(
       (data) => data?.currencyCode === code
     );

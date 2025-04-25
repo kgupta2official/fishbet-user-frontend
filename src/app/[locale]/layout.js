@@ -16,8 +16,10 @@ import initTranslations from '../i18n';
 import ChatModule from './@chat/page';
 import LoginSignup from './@login/page';
 import './global.scss';
-
+import './global.css';
+import NextTopLoader from 'nextjs-toploader';
 import SocketProvider from './SocketProvider';
+// import { Toasters } from 'react-hot-toast';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -41,7 +43,7 @@ export function generateStaticParams() {
 }
 
 // export default async function RootLayout({ children, params: { locale } }) {
-export default async function RootLayout({ children, params}) {
+export default async function RootLayout({ children, params }) {
   const { locale } = await params;
   const { resources } = await initTranslations(locale, i18nNamespaces);
 
@@ -66,7 +68,7 @@ export default async function RootLayout({ children, params}) {
                 locale={locale}
                 resources={resources}
               >
-                <LoginSignup />
+                {/* <LoginSignup /> */}
                 <SocketProvider>
                   <SidebarProvider>
                     <SidebarSection />
@@ -75,13 +77,14 @@ export default async function RootLayout({ children, params}) {
                       <div className="h-[calc(100vh-121px)] md:h-[calc(100vh-63px)] w-full overflow-y-auto scrollbar-thin scrollable-Content-Home">
                         <div className="w-full px-[4vw] py-4 bg-[hsl(var(--main-background))] ">
                           <div className="max-w-[1200px] mx-auto">
+                            <NextTopLoader color="#fa114f" showSpinner={false} />
+                            {/* <Toasters /> */}
                             {children}
                           </div>
                         </div>
                         <FloatElements />
                         <Footer />
                       </div>
-
                       <NavMobile />
                     </SidebarInset>
                     <ChatModule />

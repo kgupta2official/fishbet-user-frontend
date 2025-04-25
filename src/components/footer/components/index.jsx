@@ -55,13 +55,13 @@ const Footer = () => {
             {/* this things are not required at that time  */}
 
             <p className="pt-2">
-              {t('support')}:
+              {t('support')}:&nbsp;
               <span className="text-white hover:underline cursor-pointer">
-                tony@fishbetStars.io
+                support@fishbet.us
               </span>{' '}
               | {t('business')}:{' '}
               <span className="text-white hover:underline cursor-pointer">
-                amy@fishbetStars.io{' '}
+                support@fishbet.us{' '}
               </span>
             </p>
             {/* <p>{t('cooperationWelcome')}</p>

@@ -6,11 +6,19 @@ import CoinToggler from './CoinToggler';
 import Logo from './Logo';
 import ProfileSection from './ProfileSection';
 import BuyReedem from '@/components/Buy-Reedem/components';
+import SignInUpButton from './SignInUpButton';
+import useUserAuth from '../../../components/LoginSignup/hooks/useUserAuth';
+import { useState } from 'react';
 
 export default function Header() {
   const { t, handleClick, isOpen, clickedButton, handleButtonClick } =
     useHeader();
   const isMobile = useIsMobile();
+  // const { isLoggedIn } = useUserAuth();
+  const [open, setOpen] = useState(false); 
+  const { isLoggedIn } = useUserAuth({ setOpen });
+
+
   return (
     <header className="flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]">
       <Logo />
@@ -32,6 +40,9 @@ export default function Header() {
             </Button>
           </div>
         )}
+      </div>
+      <div>
+      {!isLoggedIn && <SignInUpButton />} 
       </div>
       <div>
         <ProfileSection />

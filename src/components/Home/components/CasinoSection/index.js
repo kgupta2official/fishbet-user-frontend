@@ -546,8 +546,8 @@ export default function CasinoSection({
       <div className="flex justify-between items-center">
         <div className="flex shiny-hover text-white justify-start items-center bg-[rgb(var(--lb-blue-800))] p-2 md:px-3 rounded-[50px] m-2 relative font-extrabold text-[12px] sm:text-sm">
           <Image src={gameIcon} alt="category" className="mx-2 w-[18px] sm:w-[24px]" />
-          {categoryName}
-        </div>
+          {categoryName && categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
+          </div>
         <div className="flex items-center gap-x-1 md:gap-x-2">
           <button
             onClick={() => clickHandler({ categoryId })}
