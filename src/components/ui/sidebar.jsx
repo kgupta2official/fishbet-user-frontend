@@ -20,8 +20,8 @@ import {
 import Image from 'next/image';
 import { panelLeft } from '@/assets/svg';
 import { useStateContext } from '@/store';
-import { useState } from 'react';
-import useUserAuth from '../LoginSignup/hooks/useUserAuth';
+//import { useState } from 'react';
+//import useUserAuth from '../LoginSignup/hooks/useUserAuth';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_NAME_RIGHT = 'sidebar:stateRight';
