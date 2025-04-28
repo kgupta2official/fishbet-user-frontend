@@ -3,18 +3,24 @@
 import Link from 'next/link';
 
 const SignInUpButton = () => {
-    
-    return (
-        <>
-            <div className="login-joinnow-button gap-2">
-                <Link role="link" className="header-login-button mt-button-outlined" href="/sign-in">
-                    Login
-                </Link>
-                <Link role="link" className="header-joinnow-button mt-button-contained" href="/sign-up">
-                    Join now
-                </Link>
-            </div>
-        </>
-    );
+  return (
+    <div className="flex sm:flex-row items-center justify-center gap-2 p-2">
+      <Link
+        role="link"
+        className="header-login-button mt-button-outlined sm:w-auto w-full text-center"
+        href="/sign-in"
+      >
+        Login
+      </Link>
+      <Link
+        role="link"
+        className="header-joinnow-button mt-button-contained sm:w-auto w-full text-center text-nowrap flex justify-center"
+        href="/sign-up"
+      >
+        Join now
+      </Link>
+    </div>
+  );
 };
+
 export default SignInUpButton;

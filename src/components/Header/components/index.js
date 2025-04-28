@@ -42,7 +42,7 @@ export default function Header() {
         )}
       </div>
       <div>
-      {!isLoggedIn && <SignInUpButton />} 
+      {!isMobile && !isLoggedIn && <SignInUpButton />}
       </div>
       <div>
         <ProfileSection />

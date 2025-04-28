@@ -13,6 +13,8 @@ import {
 import MobileCloseButton from './components/mobile-closebtn';
 import NavContent from './components/nev-contwent';
 import { pixiApplicationInit } from '@/pixi-js-scripts/bridge';
+import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
+import SignInUpButton from '../Header/components/SignInUpButton';
 
 export default function SidebarSection({ props }) {
   const { state } = useStateContext();
@@ -21,6 +23,8 @@ export default function SidebarSection({ props }) {
     setIsOpen((prev) => !prev);
   };
   const isMobile = useIsMobile();
+  const { isLoggedIn } = useUserAuth({isOpen});
+
   useEffect(() => {
     pixiApplicationInit();
   }, []);
@@ -52,6 +56,11 @@ export default function SidebarSection({ props }) {
         <SidebarContent className="py-2 px-4 group-data-[collapsible=icon]:px-2">
           <NavContent isSidebarOpen={isOpen} />
         </SidebarContent>
+        {isMobile && !isLoggedIn && (
+          <div className="flex justify-center">
+            <SignInUpButton />
+          </div>
+        )}
       </div>
     </Sidebar>
   );
