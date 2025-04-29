@@ -859,7 +859,7 @@ p {
 
 .AuthDialogLayout_root__m16b8 {
     margin: 0 auto 1rem;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     max-width: 27rem;
     position: relative;
     color: #fff;

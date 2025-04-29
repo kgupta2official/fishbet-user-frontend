@@ -352,7 +352,7 @@ const SignIn = () => {
    };
 
    return (
-      <div className="AuthDialogLayout_root__m16b8 AuthDialogLayout_wider__Hd9qK fullscreen-modal">
+      <div className="AuthDialogLayout_root__m16b8 AuthDialogLayout_wider__Hd9qK fullscreen-modal sm:justify-start">
          <div className="flex justify-between items-center px-4 py-4 bg-black">
             <Image
                src={FishbetLogo}

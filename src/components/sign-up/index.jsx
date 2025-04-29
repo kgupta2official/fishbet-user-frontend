@@ -902,16 +902,16 @@ const SignUp = () => {
    const validationSchemas = [
       Yup.object({
          username: Yup.string().required('Username is required'),
-         password: Yup.string().min(6, 'Minimum 6 characters').required('Required'),
+         password: Yup.string().min(6, 'Minimum 6 characters').required('password is required'),
       }),
       Yup.object({
-         firstName: Yup.string().required('Required'),
-         lastName: Yup.string().required('Required'),
-         state: Yup.string().required('Required'),
+         firstName: Yup.string().required('firstName is required'),
+         lastName: Yup.string().required('lastName is required'),
+         state: Yup.string().required('state is required'),
          dob: Yup.object({
-            month: Yup.string().required('Required'),
-            day: Yup.string().required('Required'),
-            year: Yup.string().required('Required'),
+            month: Yup.string().required('month is required'),
+            day: Yup.string().required('day is required'),
+            year: Yup.string().required('year is required'),
          }),
          referredBy: Yup.string().optional(),
       }),
@@ -919,7 +919,7 @@ const SignUp = () => {
    ];
 
    return (
-      <div className="AuthDialogLayout_root__m16b8 AuthDialogLayout_wider__Hd9qK fullscreen-modal">
+      <div className="AuthDialogLayout_root__m16b8 AuthDialogLayout_wider__Hd9qK fullscreen-modal !sm:block !sm:justify-start">
          <div className="flex justify-between items-center px-4 py-4 bg-black">
             <Image
                src={FishbetLogo}
@@ -940,11 +940,11 @@ const SignUp = () => {
          <div className="RegisterPage_content__ggoos">
             <Carousel
                responsive={responsive}
-               arrows={false}
+               arrows={true}
                infinite
                autoPlay
                autoPlaySpeed={3000}
-               showDots={false}
+               showDots={true}
                containerClass="styles_scrollContainer__juBOU styles_root__pYj3Q styles_scrollContainer__nkZbY"
                itemClass="styles_bannerTile__qPuS3"
             >
@@ -963,6 +963,10 @@ const SignUp = () => {
 
             <div className="MultiStepProgressBar_progressBar__VPU6P RegisterPage_progressSteps__BMCrn">
                <ol className="MultiStepProgressBar_steps__ZsoRH">
+                  {
+                     step === 1 || step === 2 &&
+                        <button data-disabled="false" onClick={() => setStep(0)} className="mt-button-base-root mt-icon-button-root mt-icon-button-root-sizeMedium MultiStepProgressBar_backBtn__x0g3g BackButton_backButton__2ujku BackButton_black__ahQIg" data-testid="modal-back-button" aria-label="back button" data-test="modal-back-button"><span class="mt-icon-button-label"><img className="BackButton_icon__6776N" src="https://storage.googleapis.com/www.mcluck.com/mcluck-images/common/left.svg" width="16" height="16" alt="arrow-left" /></span></button>
+                  }
                   <li className="Step_stepItem__jWI_E">
                      <div className={`Step_stepItemContent__7iHdw ${step === 0 ? 'active' : ''}`}>1</div>
                      <div className="SubSteps_progressLine__fbiKy" />
