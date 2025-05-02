@@ -323,8 +323,6 @@ const SignIn = () => {
       status: '',
    });
 
-   console.log("toastState", toastState)
-
    const { onSubmit, loading: loginLoading } = useUserAuth({
       isSignUp: false,
       setToastState,

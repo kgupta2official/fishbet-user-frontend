@@ -15,7 +15,7 @@ export default function Header() {
     useHeader();
   const isMobile = useIsMobile();
   // const { isLoggedIn } = useUserAuth();
-  const [open, setOpen] = useState(false);
+  const [, setOpen] = useState(false);
   const { isLoggedIn } = useUserAuth({ setOpen });
 
 

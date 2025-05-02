@@ -869,6 +869,7 @@ const SignUp = () => {
             username: value.username,
             password: value.password,
          }));
+         console.log(idx);
          setStep(1);
       } else if (step === 1) {
          setFormData((prev) => ({
