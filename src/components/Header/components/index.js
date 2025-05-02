@@ -15,7 +15,7 @@ export default function Header() {
     useHeader();
   const isMobile = useIsMobile();
   // const { isLoggedIn } = useUserAuth();
-  const [, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
   const { isLoggedIn } = useUserAuth({ setOpen });
 
 
@@ -23,8 +23,10 @@ export default function Header() {
     <header className="flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]">
       <Logo />
       <div className="flex items-center justify-center gap-4">
-        <CoinToggler />
-        {!isMobile && (
+        {isLoggedIn && (
+          <CoinToggler />
+        )}
+        {!isMobile && isLoggedIn && (
           <div className="flex space-x-4">
             <Button
               className="bg-green-400 hover:bg-green-500 w-[67px] h-[42px] leading-[42px] cursor-pointer text-center text-blue-950 font-semibold rounded-[30px]"
@@ -42,10 +44,12 @@ export default function Header() {
         )}
       </div>
       <div>
-      {!isMobile && !isLoggedIn && <SignInUpButton />}
+        {!isMobile && !isLoggedIn && <SignInUpButton />}
       </div>
       <div>
-        <ProfileSection />
+        {isLoggedIn && (
+          <ProfileSection />
+        )}
       </div>
       {isOpen && (
         <BuyReedem

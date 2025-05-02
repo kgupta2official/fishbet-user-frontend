@@ -153,6 +153,11 @@ const useUserAuth = ({ setOpen, isSignUp = false, setToastState, onSuccess = () 
           message: message || 'An unknown error occurred',
         });
       }
+      setToastState({
+        showToast: true,
+        message: message || 'Something went wrong. Please try again.',
+        status: 'error',
+      });    
     }
   };
   const togglePasswordVisibility = () => {

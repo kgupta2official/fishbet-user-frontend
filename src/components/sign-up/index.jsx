@@ -817,6 +817,21 @@ import Link from 'next/link';
 import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
 import { eye, eyeOff } from '@/assets/svg';
 
+const allMonth = [
+   { value: '01', label: 'January' },
+   { value: '02', label: 'February' },
+   { value: '03', label: 'March' },
+   { value: '04', label: 'April' },
+   { value: '05', label: 'May' },
+   { value: '06', label: 'June' },
+   { value: '07', label: 'July' },
+   { value: '08', label: 'August' },
+   { value: '09', label: 'September' },
+   { value: '10', label: 'October' },
+   { value: '11', label: 'November' },
+   { value: '12', label: 'December' }
+];
+
 const SignUp = () => {
    const [step, setStep] = useState(0);
    const router = useRouter();
@@ -825,7 +840,7 @@ const SignUp = () => {
       password: '',
       firstName: '',
       lastName: '',
-      country: 'United States',
+      country: 'Country of Residence',
       state: '',
       dob: { month: '', day: '', year: '' },
       referredBy: ''
@@ -848,9 +863,6 @@ const SignUp = () => {
    }, [step, router]);
 
    const nextStep = (value, idx) => {
-      console.log('value', value);
-      console.log('idx', idx);
-
       if (step === 0) {
          setFormData((prev) => ({
             ...prev,
@@ -889,7 +901,7 @@ const SignUp = () => {
       password: '',
       firstName: '',
       lastName: '',
-      country: 'United States',
+      country: 'Country of Residence',
       state: '',
       dob: {
          month: '',
@@ -899,24 +911,75 @@ const SignUp = () => {
       referredBy: '',
    };
 
+   // const validationSchemas = [
+   //    Yup.object({
+   //       username: Yup.string().required('Username is required'),
+   //       password: Yup.string().min(6, 'Minimum 6 characters').required('password is required'),
+   //    }),
+   //    Yup.object({
+   //       firstName: Yup.string().required('firstName is required'),
+   //       lastName: Yup.string().required('lastName is required'),
+   //       state: Yup.string().required('state is required'),
+   //       dob: Yup.object({
+   //          month: Yup.string().required('month is required'),
+   //          day: Yup.string().required('day is required'),
+   //          year: Yup.string().required('year is required'),
+   //       }),
+   //       referredBy: Yup.string().optional(),
+   //    }),
+   //    null
+   // ];
+
    const validationSchemas = [
       Yup.object({
-         username: Yup.string().required('Username is required'),
-         password: Yup.string().min(6, 'Minimum 6 characters').required('password is required'),
+         username: Yup.string()
+            .required('Username is required')
+            .matches(/^[A-Za-z][A-Za-z0-9_]*$/, 'Username must start with a letter and contain only letters, numbers, or underscores'),
+         password: Yup.string()
+            .min(6, 'Minimum 6 characters')
+            .required('Password is required')
+            .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/, 'Password must contain letters and numbers'),
       }),
       Yup.object({
-         firstName: Yup.string().required('firstName is required'),
-         lastName: Yup.string().required('lastName is required'),
-         state: Yup.string().required('state is required'),
+         firstName: Yup.string()
+            .required('First name is required')
+            .matches(/^[A-Za-z\s]+$/, 'First name must contain only letters'),
+         lastName: Yup.string()
+            .required('Last name is required')
+            .matches(/^[A-Za-z\s]+$/, 'Last name must contain only letters'),
+         state: Yup.string()
+            .required('State is required')
+            .matches(/^[A-Za-z\s]+$/, 'State must contain only letters'),
          dob: Yup.object({
-            month: Yup.string().required('month is required'),
-            day: Yup.string().required('day is required'),
-            year: Yup.string().required('year is required'),
+            month: Yup.string()
+               .required('Month is required')
+               .matches(/^(0?[1-9]|1[0-2])$/, 'Enter valid month (1-12)'),
+            day: Yup.string()
+               .required('Day is required')
+               .matches(/^(0?[1-9]|[12][0-9]|3[01])$/, 'Enter valid day (1-31)'),
+            year: Yup.string()
+               .required('Year is required')
+               .matches(/^\d{4}$/, 'Enter valid 4-digit year')
+               .test('is-18', 'You have to be 18 years or older', function (year) {
+                  const { month, day } = this.parent;
+                  if (!month || !day || !year) return false;
+                  const birthDate = new Date(`${year}-${month}-${day}`);
+                  if (isNaN(birthDate)) return false;
+                  const today = new Date();
+                  let age = today.getFullYear() - birthDate.getFullYear();
+                  const m = today.getMonth() - birthDate.getMonth();
+                  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                     age--;
+                  }
+                  return age >= 18;
+               }),
          }),
          referredBy: Yup.string().optional(),
       }),
+
       null
    ];
+
 
    return (
       <div className="AuthDialogLayout_root__m16b8 AuthDialogLayout_wider__Hd9qK fullscreen-modal !sm:block !sm:justify-start">
@@ -964,8 +1027,8 @@ const SignUp = () => {
             <div className="MultiStepProgressBar_progressBar__VPU6P RegisterPage_progressSteps__BMCrn">
                <ol className="MultiStepProgressBar_steps__ZsoRH">
                   {
-                     step === 1 || step === 2 &&
-                        <button data-disabled="false" onClick={() => setStep(0)} className="mt-button-base-root mt-icon-button-root mt-icon-button-root-sizeMedium MultiStepProgressBar_backBtn__x0g3g BackButton_backButton__2ujku BackButton_black__ahQIg" data-testid="modal-back-button" aria-label="back button" data-test="modal-back-button"><span class="mt-icon-button-label"><img className="BackButton_icon__6776N" src="https://storage.googleapis.com/www.mcluck.com/mcluck-images/common/left.svg" width="16" height="16" alt="arrow-left" /></span></button>
+                     step === 1 &&
+                     <button data-disabled="false" onClick={() => setStep(0)} className="!px-4 mt-button-base-root mt-icon-button-root mt-icon-button-root-sizeMedium MultiStepProgressBar_backBtn__x0g3g BackButton_backButton__2ujku BackButton_black__ahQIg" data-testid="modal-back-button" aria-label="back button" data-test="modal-back-button"><span className="mt-icon-button-label"><img className="BackButton_icon__6776N" src="https://storage.googleapis.com/www.mcluck.com/mcluck-images/common/left.svg" width="16" height="16" alt="arrow-left" /></span></button>
                   }
                   <li className="Step_stepItem__jWI_E">
                      <div className={`Step_stepItemContent__7iHdw ${step === 0 ? 'active' : ''}`}>1</div>
@@ -1063,9 +1126,9 @@ const SignUp = () => {
                                  <Field
                                     type="text"
                                     name="country"
-                                    value="United States"
+                                    value="Country of Residence"
                                     disabled
-                                    className="mt-input-base mt-input-outlined new-input-design new-signin-signup-button-design"
+                                    className="mt-input-base mt-input-outlined new-input-design new-signin-signup-button-design cursor-no-drop !select-none"
                                  />
                               </div>
                               <div className="mt-input-root styles_input__F0jYD">
@@ -1079,16 +1142,15 @@ const SignUp = () => {
                               </div>
                            </div>
 
-                           <div className="flex gap-2">
-                              <div className="mt-input-root styles_input__F0jYD">
-                                 <Field
-                                    type="text"
-                                    name="dob.month"
-                                    placeholder="Month"
-                                    className="mt-input-base mt-input-outlined new-input-design new-signin-signup-button-design"
-                                 />
-                                 <ErrorMessage name="dob.month" component="span" className="mt-input-helper-text" />
-                              </div>
+                           <div className="text-xs text-[#ccc] font-semibold ml-2">Date Of Birth<span className="text-red-600 ml-1">*</span></div>
+                           <div className="flex gap-2 w-full">
+                              <Field as="select" name="dob.month" className="mt-input-base mt-input-outlined new-input-design new-signin-signup-button-design">
+                                 {allMonth.map((month) => (
+                                    <option key={month.value} value={month.value}>
+                                       {month.label}
+                                    </option>
+                                 ))}
+                              </Field>
                               <div className="mt-input-root styles_input__F0jYD">
                                  <Field
                                     type="text"
