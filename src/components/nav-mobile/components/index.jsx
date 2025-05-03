@@ -12,7 +12,7 @@ import { useStateContext } from '@/store';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import useUserAuth from '../../../components/LoginSignup/hooks/useUserAuth';
-import { useState , useEffect } from 'react'
+import { useState , useEffect } from 'react';
 
 const NavMobile = () => {
 

@@ -18,7 +18,7 @@ import useTaskList from '@/components/TaskList/hooks/useTaskList';
 import { isEmpty } from '@/lib/utils';
 import ChatRule from '@/components/chat-rule/components';
 import useUserAuth from '../../../../components/LoginSignup/hooks/useUserAuth';
-import { useState , useEffect } from 'react'
+import { useState , useEffect } from 'react';
 
 const COMPONENT_MAPPING = {
   Task: TaskList,

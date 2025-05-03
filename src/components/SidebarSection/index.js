@@ -13,8 +13,8 @@ import {
 import MobileCloseButton from './components/mobile-closebtn';
 import NavContent from './components/nev-contwent';
 import { pixiApplicationInit } from '@/pixi-js-scripts/bridge';
-import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
-import SignInUpButton from '../Header/components/SignInUpButton';
+// import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
+// import SignInUpButton from '../Header/components/SignInUpButton';
 
 export default function SidebarSection({ props }) {
   const { state } = useStateContext();
@@ -23,7 +23,7 @@ export default function SidebarSection({ props }) {
     setIsOpen((prev) => !prev);
   };
   const isMobile = useIsMobile();
-  const { isLoggedIn } = useUserAuth({isOpen});
+  // const { isLoggedIn } = useUserAuth({isOpen});
 
   useEffect(() => {
     pixiApplicationInit();
