@@ -18,7 +18,7 @@ import useTaskList from '@/components/TaskList/hooks/useTaskList';
 import { isEmpty } from '@/lib/utils';
 import ChatRule from '@/components/chat-rule/components';
 import useUserAuth from '../../../../components/LoginSignup/hooks/useUserAuth';
-import { useState , useEffect } from 'react';
+import { useState  } from 'react';
 
 const COMPONENT_MAPPING = {
   Task: TaskList,
@@ -29,7 +29,7 @@ const COMPONENT_MAPPING = {
 };
 const ChatNav = () => {
 
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
 
 
   const [, setOpen] = useState(false);
@@ -42,11 +42,11 @@ const ChatNav = () => {
   const COMPONENT = COMPONENT_MAPPING?.[active];
 
   
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
-  if (!mounted) return null;
+  // if (!mounted) return null;
   
   return (
     <div className="flex justify-between">

@@ -16,9 +16,9 @@ import { useState , useEffect } from 'react';
 
 const NavMobile = () => {
 
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
 
-  if (!mounted) return null;
+  // if (!mounted) return null;
 
   const { state, dispatch } = useStateContext();
   const router = useRouter();
@@ -26,9 +26,9 @@ const NavMobile = () => {
   const [, setOpen] = useState(false);
   const { isLoggedIn } = useUserAuth({ setOpen });
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
   return (
     <div className="flex md:hidden items-center justify-between bg-[rgb(var(--header))] box-border py-2 sticky bottom-0 z-[11]">
