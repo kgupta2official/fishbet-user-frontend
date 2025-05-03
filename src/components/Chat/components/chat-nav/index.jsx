@@ -17,6 +17,9 @@ import useChatNav from '../../hooks/useChatNav';
 import useTaskList from '@/components/TaskList/hooks/useTaskList';
 import { isEmpty } from '@/lib/utils';
 import ChatRule from '@/components/chat-rule/components';
+import useUserAuth from '../../../../components/LoginSignup/hooks/useUserAuth';
+import { useState , useEffect } from 'react'
+
 const COMPONENT_MAPPING = {
   Task: TaskList,
   Notice: Notice,
@@ -25,12 +28,26 @@ const COMPONENT_MAPPING = {
   ChatRule: ChatRule,
 };
 const ChatNav = () => {
+
+  const [mounted, setMounted] = useState(false);
+
+
+  const [, setOpen] = useState(false);
+  const { isLoggedIn } = useUserAuth({ setOpen });
   const { state, dispatch } = useStateContext();
   const { activeTaskList } = useTaskList();
   const activeTask = isEmpty(activeTaskList) ? 0 : activeTaskList?.length;
   const isMobile = useIsMobile();
   const { handleClick, active, isOpen, buttonType } = useChatNav();
   const COMPONENT = COMPONENT_MAPPING?.[active];
+
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+  
   return (
     <div className="flex justify-between">
       <div className="flex gap-4 items-center">
@@ -38,7 +55,7 @@ const ChatNav = () => {
         <span className="text-white text-sm">EN</span>
       </div>
       <div className="flex gap-2">
-        {chatNavBtnData?.map(
+        { isLoggedIn && chatNavBtnData?.map(
           ({
             id,
             icon,

@@ -11,11 +11,24 @@ import DialogComponentsMapping from '@/components/SidebarSection/common/dialog-c
 import { useStateContext } from '@/store';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import useUserAuth from '../../../components/LoginSignup/hooks/useUserAuth';
+import { useState , useEffect } from 'react'
 
 const NavMobile = () => {
+
+  const [mounted, setMounted] = useState(false);
+
+  if (!mounted) return null;
+
   const { state, dispatch } = useStateContext();
   const router = useRouter();
   const { t, handleButtonClick, isOpen, handleClick, activeUrl } = useHeader();
+  const [, setOpen] = useState(false);
+  const { isLoggedIn } = useUserAuth({ setOpen });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="flex md:hidden items-center justify-between bg-[rgb(var(--header))] box-border py-2 sticky bottom-0 z-[11]">
@@ -35,21 +48,24 @@ const NavMobile = () => {
         <span className="text-white text-xs font-bold">{t('Chat')}</span>
       </button>
 
-      <button
-        onClick={() => {
-          handleButtonClick('buy');
-        }}
-        className="opacity-60 hover:opacity-100 px-4 sm:px-5 py-1 rounded-full flex flex-col items-center"
-      >
-        <Image
-          src={bets}
-          width={22}
-          height={22}
-          alt="bets-icon"
-          className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]"
-        />
-        <span className="text-white text-xs font-bold">{t('Buy')}</span>
-      </button>
+      {isLoggedIn && (
+        <button
+          onClick={() => {
+            handleButtonClick('buy');
+          }}
+          className="opacity-60 hover:opacity-100 px-4 sm:px-5 py-1 rounded-full flex flex-col items-center"
+        >
+          <Image
+            src={bets}
+            width={22}
+            height={22}
+            alt="bets-icon"
+            className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]"
+          />
+          <span className="text-white text-xs font-bold">{t('Buy')}</span>
+        </button>
+      )}
+
 
       <button
         onClick={() => router.push('/')}
@@ -65,21 +81,23 @@ const NavMobile = () => {
         <span className="text-white text-xs font-bold">{t('Home')}</span>
       </button>
 
-      <button
-        onClick={() => {
-          handleButtonClick('faucet');
-        }}
-        className="opacity-60 hover:opacity-100 px-4 sm:px-5 py-1 rounded-full flex flex-col items-center"
-      >
-        <Image
-          src={faucetIcon}
-          width={22}
-          height={22}
-          alt="faucet-icon"
-          className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]"
-        />
-        <span className="text-white text-xs font-bold">{t('Faucet')}</span>
-      </button>
+      {isLoggedIn && (
+        <button
+          onClick={() => {
+            handleButtonClick('faucet');
+          }}
+          className="opacity-60 hover:opacity-100 px-4 sm:px-5 py-1 rounded-full flex flex-col items-center"
+        >
+          <Image
+            src={faucetIcon}
+            width={22}
+            height={22}
+            alt="faucet-icon"
+            className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]"
+          />
+          <span className="text-white text-xs font-bold">{t('Faucet')}</span>
+        </button>
+      )}
 
       <button
         className="opacity-60 hover:opacity-100 px-4 sm:px-5  py-1 rounded-full flex flex-col items-center"

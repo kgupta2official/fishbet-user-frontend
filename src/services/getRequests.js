@@ -71,6 +71,9 @@ export const getVipService = (payload) =>
 export const getChatGroup = (payload) =>
   getRequest(`${API_URL}/live-chat/get-chat-group`, payload);
 
+// export const getSocialLinks = (payload) =>
+//   getRequest(`${API_URL}/get-social-links`, payload);
+
 export const getGroupChat = (payload) =>
   getRequest(`${API_URL}/live-chat/get-chat`, payload);
 

@@ -13,16 +13,16 @@ function Logo() {
     async function fetchLogo() {
       try {
         const siteDetails = await getSiteDetails();
-        console.log('API Response:', siteDetails?.data?.tenantDetail?.logo); 
+        console.log('API Response:', siteDetails?.data?.tenantDetail?.logo);
         //setLogoUrl(siteDetails?.data?.tenantDetail?.logo || '');
       } catch (error) {
         console.error('Error fetching site details:', error);
       }
     }
-  
+
     fetchLogo();
   }, []);
-  
+
 
   return (
     <div
@@ -41,12 +41,12 @@ function Logo() {
       ) : (
         <p></p>
       )} */}
-      <Image 
-      src={fishbetlogo}
-      alt="company-logo"
-          height={5}
-          width={100}
-          className="w-[90px] md:w-[70px]"
+      <Image
+        src={fishbetlogo}
+        alt="company-logo"
+        height={5}
+        width={100}
+        className="w-[90px] md:w-[70px]"
       />
     </div>
   );

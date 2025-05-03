@@ -44,7 +44,7 @@ export default function Header() {
         )}
       </div>
       <div>
-        {!isMobile && !isLoggedIn && <SignInUpButton />}
+        { !isLoggedIn && <SignInUpButton />}
       </div>
       <div>
         {isLoggedIn && (

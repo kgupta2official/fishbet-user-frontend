@@ -56,11 +56,11 @@ export default function SidebarSection({ props }) {
         <SidebarContent className="py-2 px-4 group-data-[collapsible=icon]:px-2">
           <NavContent isSidebarOpen={isOpen} />
         </SidebarContent>
-        {isMobile && !isLoggedIn && (
+        {/* {isMobile && !isLoggedIn && (
           <div className="flex justify-center">
             <SignInUpButton />
           </div>
-        )}
+        )} */}
       </div>
     </Sidebar>
   );
