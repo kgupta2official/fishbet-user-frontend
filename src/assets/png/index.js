@@ -67,8 +67,8 @@ import bannerthree from './Banner-1.jpg';
 import Image404 from './404 page 2.jpg';
 import identification from './identification.png';
 import successIdentity from './success_identity.png';
-import instagramIcon from './instagram.png'
-import linkedinIcon from './linkedin.png'
+import instagramIcon from './instagram.png';
+import linkedinIcon from './linkedin.png';
 export {
   logoImage,
   bannerone,

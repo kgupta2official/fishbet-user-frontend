@@ -20,7 +20,7 @@ const useSidebar = () => {
   const [activeUrl, setActiveUrl] = useState('');
   const [openDropdown, setOpendropdown] = useState(false);
   const [categoryOptions, setCategoryOptions] = useState([]);
-  const [providerOptions, setProviderOptions] = useState([]);
+  const [, setProviderOptions] = useState([]);
   const [, setOpen] = useState(false);
 const { isLoggedIn } = useUserAuth({ setOpen });
   const { t } = useTranslation();

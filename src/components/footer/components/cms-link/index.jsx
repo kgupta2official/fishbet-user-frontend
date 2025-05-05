@@ -16,8 +16,8 @@ const COMPONENT_MAPPING = {
   transactions: Transactions,
   faucet: Faucet,
 };
-import { getSocialLinks } from '@/services/getRequests'
-import {useEffect} from 'react'
+import { getSocialLinks } from '@/services/getRequests';
+import {useEffect} from 'react';
 
 
 const CmsLink = () => {
