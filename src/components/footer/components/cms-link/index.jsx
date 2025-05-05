@@ -7,7 +7,7 @@ import Transactions from '@/components/transaction/components';
 import Link from 'next/link';
 import { useState } from 'react';
 import useCms from '../../hooks/useCms';
-import { telegramIcon, xIcon } from '@/assets/png';
+import { telegramIcon, xIcon , instagramIcon , linkedinIcon } from '@/assets/png';
 import { comment } from 'postcss';
 import Image from 'next/image';
 const COMPONENT_MAPPING = {
@@ -16,15 +16,34 @@ const COMPONENT_MAPPING = {
   transactions: Transactions,
   faucet: Faucet,
 };
+import { getSocialLinks } from '@/services/getRequests'
+import {useEffect} from 'react'
+
+
 const CmsLink = () => {
   const { cmsData, cmsLoading, handleOnClick } = useCms();
   const [isOpen, setIsOpen] = useState(false);
-
+  const [socialLinks, setSocialLinks] = useState([]);
   const [activeUrl, setActiveUrl] = useState('');
   const handleClick = (value) => {
     setIsOpen(!isOpen);
     setActiveUrl(value);
   };
+
+  useEffect(() => {
+    fetchSiteDetails();
+  }, []);
+
+  const fetchSiteDetails = async () => {
+    try {
+      const res = await getSocialLinks();
+      setSocialLinks(res?.data?.socialLinks || []);
+    } catch (error) {
+      console.error('Failed to fetch site details', error);
+    }
+  };
+
+
 
   const COMPONENT = COMPONENT_MAPPING?.[activeUrl];
   if (COMPONENT) {
@@ -34,6 +53,7 @@ const CmsLink = () => {
   }
 
   const DEFAULT_LOCALE = 'EN';
+
   const cmsContent = [
     // {
     //   heading: 'Casino',
@@ -64,15 +84,27 @@ const CmsLink = () => {
       components: [
         {
           name: 'Twitter',
-          slug: 'https://twitter.com',
+          slug: socialLinks[0]?.twitter || '',
           type: 'external',
           icon: xIcon,
         },
         {
           name: 'Telegram',
-          slug: 'https://telegram.org',
+          slug: socialLinks[0]?.telegram || '',
           type: 'external',
           icon: telegramIcon,
+        },
+        {
+          name: 'Instagram',
+          slug: socialLinks[0]?.instagram || '',
+          type: 'external',
+          icon: instagramIcon,
+        },
+        {
+          name: 'Linkedin',
+          slug: socialLinks[0]?.linkedin || '',
+          type: 'external',
+          icon: linkedinIcon,
         },
       ],
     },

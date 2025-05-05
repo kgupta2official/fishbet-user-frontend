@@ -25,7 +25,7 @@ const Favourites = () => {
   return (
     <div className="bg-[hsl(var(--main-background))] pt-[0vw]">
       <div className=" h-20 flex  justify-between items-center bg-[hsl(var(--lb-purple-950))] mb-6">
-        <h1 className="font-bold text-xl mx-8">{t('Favourites')}</h1>
+        <h1 className="font-bold text-2xl mx-8 text-black">{t('Favourites')}</h1>
         <Image
           src={favouriteImg}
           alt="favourite Image"

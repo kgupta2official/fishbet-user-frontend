@@ -45,7 +45,7 @@ const Provider = () => {
   return (
     <div className="mb-6 bg-[hsl(var(--main-background))]">
       <div className="font-bold text-2xl h-20 flex  justify-between items-center bg-[hsl(var(--lb-purple-950))] mb-6">
-        <h1 className="font-bold text-2xl mx-8 text-white">
+        <h1 className="font-bold text-2xl mx-8 text-black">
           {providerData?.name?.EN || 'Provider'}
         </h1>
         <Image

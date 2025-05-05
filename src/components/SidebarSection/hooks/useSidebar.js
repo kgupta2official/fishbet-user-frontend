@@ -11,6 +11,9 @@ import {
 import { sidebarData } from '../constant';
 import { getAccessToken } from '@/services/storageUtils';
 import { getAllGCValues, getAllSCValues } from '@/lib/spinWheel.utils';
+import useUserAuth from '../../../components/LoginSignup/hooks/useUserAuth';
+
+
 const useSidebar = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +21,8 @@ const useSidebar = () => {
   const [openDropdown, setOpendropdown] = useState(false);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [providerOptions, setProviderOptions] = useState([]);
+  const [, setOpen] = useState(false);
+const { isLoggedIn } = useUserAuth({ setOpen });
   const { t } = useTranslation();
   const token = getAccessToken();
   const { dispatch } = useStateContext();
@@ -76,15 +81,45 @@ const useSidebar = () => {
     }
   };
 
-  const updateSidebarData = sidebarData.map((item) => {
-    if (item?.title === 'Category') {
-      return { ...item, options: categoryOptions };
-    } else if (item?.title === 'Provider') {
-      return { ...item, options: providerOptions };
-    } else {
-      return item;
+  // const updateSidebarData = sidebarData.map((item) => {
+  //   if (item?.title === 'Category') {
+  //     return { ...item, options: categoryOptions };
+  //   } else if (item?.title === 'Provider') {
+  //     return { ...item, options: providerOptions };
+  //   } else {
+  //     return item;
+  //   }
+  // });
+
+  // const updateSidebarData = sidebarData.filter((item) => {
+  //   const publicPages = [2, 4, 5, 6]; 
+  
+  //   if (!isLoggedIn) {
+  //     return publicPages.includes(item.id);
+  //   }
+  //     return true;
+  // });
+  
+
+  const updateSidebarData = sidebarData
+  .map((item) => {
+    if (!isLoggedIn) {
+      if (item.id === 2) {
+        return {
+          ...item,
+          options: item.options.filter((option) => option.title === 'FAQ'),
+        };
+      }
+      if (item.id === 4 || item.id === 5 || item.id === 6) {
+        return item;
+      }
+      return null;
     }
-  });
+    return item;
+  })
+  .filter(Boolean); 
+
+
   const getSpinWheel = async () => {
     try {
       let res = await getSpinWheelData();
@@ -104,12 +139,9 @@ const useSidebar = () => {
     if (token) {
       getAllCategory();
       getAllProvider();
-        // Fetch data when component mounts
       getSpinWheel();
     }
   }, [token]);
-
-  // Fetch spin wheel data
   
 
   return {

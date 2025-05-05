@@ -20,37 +20,78 @@ export default function Header() {
 
 
   return (
-    <header className="flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]">
+    // <header className="flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]">
+    //   <Logo />
+    //   <div className="flex items-center justify-center gap-4">
+    //     {isLoggedIn && (
+    //       <CoinToggler />
+    //     )}
+    //     {!isMobile && isLoggedIn && (
+    //       <div className="flex space-x-4">
+    //         <Button
+    //           className="bg-green-400 hover:bg-green-500 w-[67px] h-[42px] leading-[42px] cursor-pointer text-center text-blue-950 font-semibold rounded-[30px]"
+    //           onClick={() => handleButtonClick('buy')}
+    //         >
+    //           {t('buy')}
+    //         </Button>
+    //         <Button
+    //           className="bg-[rgb(var(--secondary-btn-color))] hover:bg-[#6f7b98] w-[67px] h-[42px] leading-[42px] cursor-pointer text-center rounded-[30px]"
+    //           onClick={() => handleButtonClick('redeem')}
+    //         >
+    //           {t('redeem')}
+    //         </Button>
+    //       </div>
+    //     )}
+    //   </div>
+    //   <div>
+    //     { !isLoggedIn && <SignInUpButton />}
+    //   </div>
+    //   <div>
+    //     {isLoggedIn && (
+    //       <ProfileSection />
+    //     )}
+    //   </div>
+    //   {isOpen && (
+    //     <BuyReedem
+    //       isOpen={isOpen}
+    //       handleClick={handleClick}
+    //       buttonType={clickedButton}
+    //     />
+    //   )}
+    // </header>
+
+    <header
+      className={`flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]`}
+    >
       <Logo />
-      <div className="flex items-center justify-center gap-4">
-        {isLoggedIn && (
-          <CoinToggler />
-        )}
-        {!isMobile && isLoggedIn && (
-          <div className="flex space-x-4">
-            <Button
-              className="bg-green-400 hover:bg-green-500 w-[67px] h-[42px] leading-[42px] cursor-pointer text-center text-blue-950 font-semibold rounded-[30px]"
-              onClick={() => handleButtonClick('buy')}
-            >
-              {t('buy')}
-            </Button>
-            <Button
-              className="bg-[rgb(var(--secondary-btn-color))] hover:bg-[#6f7b98] w-[67px] h-[42px] leading-[42px] cursor-pointer text-center rounded-[30px]"
-              onClick={() => handleButtonClick('redeem')}
-            >
-              {t('redeem')}
-            </Button>
+
+      {isLoggedIn ? (
+        <>
+          <div className="flex items-center justify-center gap-4">
+            <CoinToggler />
+            {!isMobile && (
+              <div className="flex space-x-4">
+                <Button
+                  className="bg-green-400 hover:bg-green-500 w-[67px] h-[42px] leading-[42px] cursor-pointer text-center text-blue-950 font-semibold rounded-[30px]"
+                  onClick={() => handleButtonClick('buy')}
+                >
+                  {t('buy')}
+                </Button>
+                <Button
+                  className="bg-[rgb(var(--secondary-btn-color))] hover:bg-[#6f7b98] w-[67px] h-[42px] leading-[42px] cursor-pointer text-center rounded-[30px]"
+                  onClick={() => handleButtonClick('redeem')}
+                >
+                  {t('redeem')}
+                </Button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <div>
-        { !isLoggedIn && <SignInUpButton />}
-      </div>
-      <div>
-        {isLoggedIn && (
           <ProfileSection />
-        )}
-      </div>
+        </>
+      ) : (
+        <SignInUpButton />
+      )}
+
       {isOpen && (
         <BuyReedem
           isOpen={isOpen}
@@ -59,5 +100,6 @@ export default function Header() {
         />
       )}
     </header>
+
   );
 }
