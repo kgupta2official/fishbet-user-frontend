@@ -33,8 +33,8 @@ export default function CasinoSection({
             alt="category"
             className="mx-2 w-[18px] sm:w-[24px]"
           />
-          {categoryName}
-        </div>
+  {(categoryName || '').toUpperCase()}
+  </div>
         <div className="flex items-center gap-x-1 md:gap-x-2">
           <button
             onClick={() => clickHandler({ categoryId })}
