@@ -61,7 +61,7 @@ export default function Header() {
     // </header>
 
     <header
-      className={`flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]`}
+      className='flex items-center justify-between bg-[rgb(var(--header))] p-1 shadow-md sticky top-0 z-[11]'
     >
       <Logo />
 
