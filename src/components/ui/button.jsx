@@ -52,11 +52,11 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, lo
       disabled={loading}  // Disable the button if loading is true
       {...props}
     >
-      {loading ? (
+      {/* {loading ? (
         <Spinner />  // Show spinner when loading is true
       ) : (
         props.children  // Show button text when not loading
-      )}
+      )} */}
     </Comp>
   );
 });

@@ -35,6 +35,33 @@ function SpinWheel({ handleClick, isOpen }) {
     setTimeout(() => setShowTimer(false), 0);
   }, []);
 
+  const oldCanvases = pixiContainerRef.current?.querySelectorAll('canvas');
+  oldCanvases?.forEach((canvas) => canvas.remove());
+
+  useEffect(() => {
+    if (isOpen && pixiContainerRef.current) {
+      const oldCanvases = pixiContainerRef.current.querySelectorAll('canvas');
+      oldCanvases.forEach((canvas) => canvas.remove());
+      const app = new PIXI.Application({
+        width: 300,
+        height: 300,
+        backgroundAlpha: 0,
+      });
+      pixiContainerRef.current.appendChild(app.view);
+    }
+  }, [isOpen]);
+
+
+  // useEffect(() => {
+  //   const container = pixiContainerRef.current;
+  //   if (container) {
+  //     while (container.firstChild) {
+  //       container.removeChild(container.firstChild);
+  //     }
+  //   }
+  // }, [isOpen]);
+
+
   return (
     <Dialog open={isOpen} onOpenChange={handleClick}>
       <DialogContent className=" max-w-[100%] m:max-w-[80%] w-[550px] mx-auto mb-6 rounded-lg shadow-lg border-none">
@@ -93,8 +120,14 @@ function SpinWheel({ handleClick, isOpen }) {
                 </div>
               </>
             ) : !spinWheelResult?.showResult ? (
+              // <div
+              //   className={`${styles.spinWheelWrap}`}
+              //   ref={pixiContainerRef}
+              //   id="pixi-spin-wheel"
+              // ></div>
+
               <div
-                className={`${styles.spinWheelWrap}`}
+                className="flex justify-center items-center w-[300px] h-[200px]"
                 ref={pixiContainerRef}
                 id="pixi-spin-wheel"
               ></div>

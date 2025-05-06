@@ -890,13 +890,11 @@ const SignUp = () => {
          items: 1,
       },
    };
-
    const bannerImages = [
       'https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/extra-coins-banner-v2.png',
       'https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/favorite-games-banner-v2.png',
       'https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/big-wins-banner-v2.png',
    ];
-
    const initialValues = {
       username: '',
       password: '',
@@ -911,26 +909,6 @@ const SignUp = () => {
       },
       referredBy: '',
    };
-
-   // const validationSchemas = [
-   //    Yup.object({
-   //       username: Yup.string().required('Username is required'),
-   //       password: Yup.string().min(6, 'Minimum 6 characters').required('password is required'),
-   //    }),
-   //    Yup.object({
-   //       firstName: Yup.string().required('firstName is required'),
-   //       lastName: Yup.string().required('lastName is required'),
-   //       state: Yup.string().required('state is required'),
-   //       dob: Yup.object({
-   //          month: Yup.string().required('month is required'),
-   //          day: Yup.string().required('day is required'),
-   //          year: Yup.string().required('year is required'),
-   //       }),
-   //       referredBy: Yup.string().optional(),
-   //    }),
-   //    null
-   // ];
-
    const validationSchemas = [
       Yup.object({
          username: Yup.string()

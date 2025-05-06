@@ -3,13 +3,15 @@ import { heart, heartLike, play } from '@/assets/svg';
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useStateContext } from '@/store';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import './CustomCardStyle.scss';
+import { useState } from 'react';
+import useUserAuth from '../../../../components/LoginSignup/hooks/useUserAuth';
+import { toast } from '@/hooks/use-toast';
 
 export default function CardContent({
   iconUrl,
@@ -21,6 +23,11 @@ export default function CardContent({
   hideFavorite,
   isHomeScreen,
 }) {
+
+  const [, setOpen] = useState(false);
+  const { isLoggedIn } = useUserAuth({ setOpen });
+
+
   const getThumbnailUrl = (url) => {
     if (!url || url === '{}') {
       return defaultGameImage;
@@ -31,11 +38,37 @@ export default function CardContent({
   const {
     state: { user },
   } = useStateContext();
+
+  // const onclick = () => {
+  //   if (!isLoggedIn) {
+  //     route.push('/sign-up');
+  //     return;
+  //   }
+
+  //   if (user?.email) {
+  //     route.push(`/game-play/${id}`);
+  //   }
+  // };
+
   const onclick = () => {
+    if (!isLoggedIn) {
+      route.push('/sign-up');
+      return;
+    }
+
     if (user?.email) {
       route.push(`/game-play/${id}`);
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Email Verification Required",
+        description: "Hey, verify your email first to play!",
+      });
+      route.push('/setting?active=email');
     }
   };
+
+
   return (
     <div className={`game-card ${isHomeScreen ? 'home-screen' : ''}`}>
       <div className="game-card-body">
@@ -79,14 +112,14 @@ export default function CardContent({
               <Image src={play} width={30} alt="Game Img" />
             </Button>
           </TooltipTrigger>
-          {!user?.email && (
+          {/* {isLoggedIn  && !user?.email && (
             <TooltipContent
               side="top"
               className="z-[99999] text-white font-semibold border shadow-lg rounded-md p-4 mx-auto flex justify-center items-center "
             >
               <p>Hey, verify your email first to play!</p>
             </TooltipContent>
-          )}
+          )} */}
         </Tooltip>
       </div>
     </div>
