@@ -34,13 +34,13 @@ const buttonVariants = cva(
 );
 
 // Spinner component
-const Spinner = () => (
+/* const Spinner = () => (
   <div className="flex justify-center items-center space-x-2">
     <div className="w-3 h-3 rounded-full bg-[rgb(var(--lb-blue-400))] animate-pulse"></div>
     <div className="w-3 h-3 rounded-full bg-[rgb(var(--lb-blue-600))] animate-pulse animation-delay-200"></div>
     <div className="w-3 h-3 rounded-full bg-[rgb(var(--lb-blue-800))] animate-pulse animation-delay-400"></div>
   </div>
-);
+); */
 
 const Button = React.forwardRef(({ className, variant, size, asChild = false, loading, ...props }, ref) => {
   const Comp = asChild ? Slot : 'button';

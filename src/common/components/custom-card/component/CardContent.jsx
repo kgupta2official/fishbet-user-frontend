@@ -60,9 +60,9 @@ export default function CardContent({
       route.push(`/game-play/${id}`);
     } else {
       toast({
-        variant: "destructive",
-        title: "Email Verification Required",
-        description: "Hey, verify your email first to play!",
+        variant: 'destructive',
+        title: 'Email Verification Required',
+        description: 'Hey, verify your email first to play!',
       });
       route.push('/setting?active=email');
     }
