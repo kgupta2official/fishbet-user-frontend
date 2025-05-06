@@ -13,6 +13,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import useSpinWheel from '../hooks/useSpinWheel';
 import styles from './style.module.scss';
+import * as PIXI from 'pixi.js';
 
 function SpinWheel({ handleClick, isOpen }) {
   const { pixiContainerRef, spinWheelResult, spinWheelData, user } =
