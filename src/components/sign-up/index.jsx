@@ -940,31 +940,7 @@ const SignUp = () => {
                .required('Year is required')
                .matches(/^\d{4}$/, 'Enter valid 4-digit year')
                .test('is-18', 'You have to be 18 years or older', function (year) {
-                 const { month, day } = this.parent;
-                 if (!month || !day || !year) return false;
-             
-                 const paddedMonth = String(month).padStart(2, '0');
-                 const paddedDay = String(day).padStart(2, '0');
-             
-                 const birthDate = new Date(`${year}-${paddedMonth}-${paddedDay}`);
-             
-                 // Strict date validity check
-                 if (
-                   birthDate.getFullYear() !== Number(year) ||
-                   birthDate.getMonth() + 1 !== Number(month) ||
-                   birthDate.getDate() !== Number(day)
-                 ) {
-                   return false;
-                 }
-             
-                 const today = new Date();
-                 let age = today.getFullYear() - birthDate.getFullYear();
-                 const m = today.getMonth() - birthDate.getMonth();
-                 if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                   age--;
-                 }
-             
-                 return age >= 18;
+                  return year < 2007;
                }),
              
          }),
