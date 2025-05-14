@@ -38,7 +38,7 @@ export default function CasinoSection({
         <div className="flex items-center gap-x-1 md:gap-x-2">
           <button
             onClick={() => clickHandler({ categoryId })}
-            className="text-white font-bold text-[12px] sm:text-sm shiny-hover flex-center p-2 rounded-[50px] hover:bg-purple-900 bg-[rgb(var(--lb-blue-800))] "
+            className="text-white font-bold text-[12px] sm:text-sm shiny-hover flex-center p-2 rounded-[50px] hover:bg-gray-700 bg-[rgb(var(--lb-blue-800))] "
           >
             Show All
           </button>

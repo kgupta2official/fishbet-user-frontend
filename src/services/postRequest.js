@@ -32,6 +32,9 @@ export const awailFaucet = (payload) =>
 export const createTicket = (payload) =>
   postRequest(`${API_URL}/ticket`, payload);
 
+export const createVerification = (payload) =>
+  postRequest(`${API_URL}/verification/session`, payload);
+
 export const createTicketMessage = (payload) =>
   postRequest(`${API_URL}/ticket/message`, payload);
 

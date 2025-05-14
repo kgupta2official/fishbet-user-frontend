@@ -24,7 +24,7 @@ const ResponsibleGambling = () => {
         <div className="mb-2">
           <div className="text-white text-[14px] font-bold">Self Exclusion</div>
           <div className="text-[rgb(var(--lb-blue-250))] text-[13px] mb-2">
-            Need a break from Fishbet stars? To start the automated self
+            Need a break from Fishbet? To start the automated self
             exclusion process, please click the button below to receive
             confirmation instructions via email.
           </div>

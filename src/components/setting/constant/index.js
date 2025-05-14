@@ -1,6 +1,7 @@
 export const TAB_CONTROLS = [
   { label: 'Verify Profile', value: 'profile' },
   { label: 'Email', value: 'email' },
+  { label: 'Verification', value:'verification'},
   // { label: 'Two Factor', value: 'twoFactor' },
   { label: 'Password', value: 'password' },
   { label: 'Avatar', value: 'avatar' },

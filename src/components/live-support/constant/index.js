@@ -21,7 +21,7 @@ export const options = [
 export const HELP_DATA = [
   {
     heading: 'General Infromation',
-    text: 'Let\'s Learn more about Fishbet stars.io',
+    text: 'Let\'s Learn more about Fishbet.io',
     article: '4 article',
   },
   {

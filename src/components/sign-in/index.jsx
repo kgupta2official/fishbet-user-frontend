@@ -307,6 +307,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import FishbetLogo from '../../../public/assets/logoImage-removebg.png';
+import banner from '../../../public/assets/banner-1.png';
 import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
 import { useState } from 'react';
 import { eye, eyeOff } from '@/assets/svg';
@@ -444,12 +445,12 @@ const SignIn = () => {
 
 
          <div className="RegisterPage_content__ggoos">
-            <div className="styles_bannerTile__qPuS3-sign-in">
-               <img
+            <div className="styles_bannerTile__qPuS3-sign-in rounded-lg">
+               <Image
                   data-banner="true"
-                  src="https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/extra-coins-banner-v2.png"
+                  src={banner}
                   alt="registration promo banner"
-                  className="styles_registration-promo-banner__q_c6D"
+                  className="styles_registration-promo-banner__q_c6D rounded-lg"
                />
             </div>
 

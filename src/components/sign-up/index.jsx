@@ -816,6 +816,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useUserAuth from '../../components/LoginSignup/hooks/useUserAuth';
 import { eye, eyeOff } from '@/assets/svg';
+import banner from '../../../public/assets/banner-1.png';
+import banner2 from '../../../public/assets/banner-2.png';
+import banner3 from '../../../public/assets/banner-3.png';
 
 const allMonth = [
    { value: '01', label: 'January' },
@@ -890,11 +893,7 @@ const SignUp = () => {
          items: 1,
       },
    };
-   const bannerImages = [
-      'https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/extra-coins-banner-v2.png',
-      'https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/favorite-games-banner-v2.png',
-      'https://storage.googleapis.com/www.mcluck.com/mcluck-images/register/big-wins-banner-v2.png',
-   ];
+   const bannerImages = [banner , banner2 , banner3];
    const initialValues = {
       username: '',
       password: '',
@@ -942,7 +941,7 @@ const SignUp = () => {
                .test('is-18', 'You have to be 18 years or older', function (year) {
                   return year < 2007;
                }),
-             
+
          }),
          referredBy: Yup.string().optional(),
       }),
@@ -975,20 +974,19 @@ const SignUp = () => {
                responsive={responsive}
                arrows={true}
                infinite
-               autoPlay
+               // autoPlay
                autoPlaySpeed={3000}
                showDots={true}
                containerClass="styles_scrollContainer__juBOU styles_root__pYj3Q styles_scrollContainer__nkZbY"
                itemClass="styles_bannerTile__qPuS3"
             >
                {bannerImages.map((src, index) => (
-                  <div key={index}>
-                     <img
+                  <div key={index} className="styles_bannerTile__qPuS3-sign-up">
+                     <Image
                         data-banner="true"
                         src={src}
                         alt="registration promo banner"
-                        className="styles_registration-promo-banner__q_c6D"
-                        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                        className="styles_registration-promo-banner__q_c6D w-full"
                      />
                   </div>
                ))}

@@ -138,7 +138,7 @@ function CoinToggler({ setCurrency = () => {}, isPopupRequired = true }) {
               })}
         >
           <div className="space-y-2">
-            <div className="text-center">
+           <div className="text-center">
               <span className="text-[0.9rem] font-semibold">
                 Your Gold Coins Balance
               </span>
@@ -146,7 +146,7 @@ function CoinToggler({ setCurrency = () => {}, isPopupRequired = true }) {
                 <Image src={coins} alt="Gold Coin" className="w-4 h-4" />
                 <span className="text-[0.9rem]">{`${formatAmount(getBalance('GC'))} GC`}</span>
               </span>
-            </div>
+            </div> 
 
             <hr className="border-gray-600" />
 

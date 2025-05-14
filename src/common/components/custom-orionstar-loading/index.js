@@ -10,12 +10,6 @@ const CustomOrionStarLoading = () => {
       <span>B</span>
       <span>E</span>
       <span>T</span>
-      <span className="w-3"></span>
-      <span>S</span>
-      <span>T</span>
-      <span>A</span>
-      <span>R</span>
-      <span>S</span>
     </div>
   );
 };

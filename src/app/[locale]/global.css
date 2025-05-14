@@ -1046,6 +1046,13 @@ p {
     margin-bottom: 20px;
 }
 
+.styles_bannerTile__qPuS3-sign-up {
+    width: calc(100% - 10px);
+    scroll-snap-align: center;
+    /* position: relative;*/
+    /* margin-bottom: 20px;  */
+}
+
 .styles_bannerTile__qPuS3:first-child {
     margin-left: 6px;
 }

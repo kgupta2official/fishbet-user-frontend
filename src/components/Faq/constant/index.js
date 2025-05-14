@@ -16,43 +16,43 @@ export const FAQ_MAPPING = {
       description: '',
       questions: [
         {
-          question: 'What devices can I play Fishbet stars?',
+          question: 'What devices can I play Fishbet?',
           answer:
-            'Orion starssweeps is available on a wide range of devices including mobile or pad devices as well as desktop computers! Anything that supports a browser.',
+            'Fishbet is available on a wide range of devices including mobile or pad devices as well as desktop computers! Anything that supports a browser.',
         },
         {
-          question: 'Can I install/download Fishbet stars into my devices?',
+          question: 'Can I install/download Fishbet into my devices?',
           answer:
-            'Yes! Installing Orion starssweeps onto your smart devices is super easy! On Android devices, click on "Add to Home Screen" from the menu and a prompt will allow you to add Fishbet stars to your home screen. On iOS you can open Safari\'s "Share" menu by tapping the icon at the bottom of the screen, and then selecting "Add to Home Screen". You may have to scroll the menu to see the "Add to Home Screen" option. Click "Add to Home Screen" from the menu to install Fishbet stars. On desktop computers, Chrome users can open the browser\'s menu and select "Install Fishbet stars".',
+            'Yes! Installing Fishbet onto your smart devices is super easy! On Android devices, click on "Add to Home Screen" from the menu and a prompt will allow you to add Fishbet to your home screen. On iOS you can open Safari\'s "Share" menu by tapping the icon at the bottom of the screen, and then selecting "Add to Home Screen". You may have to scroll the menu to see the "Add to Home Screen" option. Click "Add to Home Screen" from the menu to install Fishbet. On desktop computers, Chrome users can open the browser\'s menu and select "Install Fishbet".',
         },
       ],
       list: [],
     },
     collectSweeps: {
-      title: 'HOW TO COLLECT ORION STARS SWEEPS',
+      title: 'HOW TO COLLECT FISHBET',
       description: '',
       questions: [],
       list: [
         {
           point:
-            'To Participate, you must have an active Fishbet stars Account. To enter the Fishbet stars, a Participant must access Fishbet stars and sign in to their Account',
+            'To Participate, you must have an active Fishbet Account. To enter the Fishbet, a Participant must access Fishbet and sign in to their Account',
           subPoint: [],
         },
         {
           point:
-            'Once they have accessed Fishbet stars, there are three potential ways for an eligible Participant to collect Fishbet stars Sweepstake Cash:',
+            'Once they have accessed Fishbet, there are three potential ways for an eligible Participant to collect Fishbet Sweepstake Cash:',
           subPoint: [
             {
               option:
-                'Receive Fishbet stars Sweepstake Cash as a free bonus when purchasing Game Coins. Each Participant may receive Fishbet stars Sweepstake Cash as a bonus upon the purchase of specifically marked packs of Game Coins. Game Coins can be used for social game play in Fishbet stars. Game Coins cannot be redeemed for prizes. The number of Fishbet stars Sweepstake Cash will receive as a bonus for each relevant Game Coin purchase will be stated in the website purchase window. All purchases of Game Coins are final and no refunds will be given.',
+                'Receive Fishbet Sweepstake Cash as a free bonus when purchasing Game Coins. Each Participant may receive Fishbet Sweepstake Cash as a bonus upon the purchase of specifically marked packs of Game Coins. Game Coins can be used for social game play in Fishbet. Game Coins cannot be redeemed for prizes. The number of Fishbet Sweepstake Cash will receive as a bonus for each relevant Game Coin purchase will be stated in the website purchase window. All purchases of Game Coins are final and no refunds will be given.',
             },
             {
               option:
-                'Receive Fishbet stars Sweepstake Cash when entering Fishbet stars no-cost giveaway contests on the Fishbet stars Facebook page. Fishbet stars occasionally holds Fishbet stars Sweepstake Cash no-cost giveaway contests which Participants can enter by following the instructions provided in the contest. These giveaways may require some action on the Participant’s part to be eligible for entry. The amount of Fishbet stars Sweepstake Cash given away will be stated on the applicable Orion starssweeps no-cost contest post and will be credited to each contest winner’s Account.',
+                'Receive Fishbet Sweepstake Cash when entering Fishbet no-cost giveaway contests on the Fishbet Facebook page. Fishbet occasionally holds Fishbet Sweepstake Cash no-cost giveaway contests which Participants can enter by following the instructions provided in the contest. These giveaways may require some action on the Participant’s part to be eligible for entry. The amount of Fishbet Sweepstake Cash given away will be stated on the applicable Fishbet no-cost contest post and will be credited to each contest winner’s Account.',
             },
             {
               option:
-                'Receive Fishbet stars Sweepstake Cash by logging into your account and by faucet.',
+                'Receive Fishbet Sweepstake Cash by logging into your account and by faucet.',
             },
           ],
         },
@@ -65,17 +65,17 @@ export const FAQ_MAPPING = {
       list: [
         {
           point:
-            'Participants with Fishbet stars can use those Fishbet stars Sweepstake Cash to play games within Fishbet stars Sweepstake Cash for a chance to win additional Fishbet stars Sweepstake Cash.',
+            'Participants with Fishbet can use those Fishbet Sweepstake Cash to play games within Fishbet Sweepstake Cash for a chance to win additional Fishbet Sweepstake Cash.',
           subPoint: [],
         },
         {
           point:
-            'Only Fishbet stars Sweepstake Cash won through game play can be redeemed for real prizes.',
+            'Only Fishbet Sweepstake Cash won through game play can be redeemed for real prizes.',
           subPoint: [],
         },
         {
           point:
-            'Fishbet stars decisions as to the administration and operation of the Sweepstakes, the game, and the amount of winnings are final and binding.',
+            'Fishbet decisions as to the administration and operation of the Sweepstakes, the game, and the amount of winnings are final and binding.',
           subPoint: [],
         },
         {
@@ -95,14 +95,14 @@ export const FAQ_MAPPING = {
             'All of our spins are completely random and all results are based on provably fair model. We have no control over the wins and losses and you can check the spins result any time through the algorithm.',
         },
         {
-          question: 'Can I have some Fishbet stars Sweepstake Cash or Game Coins?',
+          question: 'Can I have some Fishbet Sweepstake Cash or Game Coins?',
           answer:
             'We occasionally have freeplay or no purchase bonuses available. When we will send you an email letting you know all of the details. Be sure to check us out on social media as we may have special promotions there as well!',
         },
         {
           question: '. Are there any special rewards I can receive?',
           answer:
-            'After creating your account the team at Fishbet stars wants you to enjoy your time as much as possible. We believe in continuous rewards through promotional deals including match play, freeplay and other giveaways.',
+            'After creating your account the team at Fishbet wants you to enjoy your time as much as possible. We believe in continuous rewards through promotional deals including match play, freeplay and other giveaways.',
         },
         {
           question: ' Where can I get promotions/giveaways?',
@@ -117,7 +117,7 @@ export const FAQ_MAPPING = {
         {
           question: 'Can I use more than one account?',
           answer:
-            'It is against our terms and conditions for an individual to have more than one account. If you do happen to have more than one please reach out to us via the online chat so we can resolve this. You will be unable to redeem your Fishbet stars if you have more than one account.',
+            'It is against our terms and conditions for an individual to have more than one account. If you do happen to have more than one please reach out to us via the online chat so we can resolve this. You will be unable to redeem your Fishbet if you have more than one account.',
         },
         {
           question: 'Can I delete/temporarily disable my account?',
@@ -132,9 +132,9 @@ export const FAQ_MAPPING = {
       description: '',
       questions: [
         {
-          question: ' How old do I have to be to use Fishbet stars?',
+          question: ' How old do I have to be to use Fishbet?',
           answer:
-            'You have to be 18 years old or over to play Fishbet stars games.',
+            'You have to be 18 years old or over to play Fishbet games.',
         },
         {
           question: 'I don’t want my name public.',
@@ -143,7 +143,7 @@ export const FAQ_MAPPING = {
         },
         {
           question: 'Someone I don’t know is using my account.',
-          answer: `The first thing you need to do is update your password! Be sure not to share this with anyone and don't keep your account logged in on any of your devices. If you believe your account has been compromised in any way, i.e Fishbet stars Sweepstake Cash / Game Coins are missing then send us a message through the online chat with as many details as you can!`,
+          answer: `The first thing you need to do is update your password! Be sure not to share this with anyone and don't keep your account logged in on any of your devices. If you believe your account has been compromised in any way, i.e Fishbet Sweepstake Cash / Game Coins are missing then send us a message through the online chat with as many details as you can!`,
         },
         {
           question: 'I forgot/want to update my password.',
@@ -165,7 +165,7 @@ export const FAQ_MAPPING = {
         {
           question: 'The games keep freezing.',
           answer:
-            'Make sure Fishbet stars is the only app open on your phone and check that you have a strong connection to the game before you play. Check your internet connection by loading another non-cached site to establish the connection quality and download speed. Stay calm, even if the game freezes it will still play your spin. We recommend that you clear your cache regularly to improve the performance by updating to the latest version',
+            'Make sure Fishbet is the only app open on your phone and check that you have a strong connection to the game before you play. Check your internet connection by loading another non-cached site to establish the connection quality and download speed. Stay calm, even if the game freezes it will still play your spin. We recommend that you clear your cache regularly to improve the performance by updating to the latest version',
         },
         {
           question: ' How do I clear my cache?',
@@ -185,9 +185,9 @@ You can watch YouTube videos on how to do this by clicking the links below :
         },
         {
           question:
-            'My Fishbet stars Sweepstake Cash / Game Coins aren’t in my account.',
+            'My Fishbet Sweepstake Cash / Game Coins aren’t in my account.',
           answer:
-            'Make sure you logged in under the correct email address and using the correct password. We encourage you to send us a message through the online chat, with the amount of Fishbet stars Sweepstake Cash / Game Coins you believe are missing, and an approximate time that you believe this may have occurred so that we can take a look for you!',
+            'Make sure you logged in under the correct email address and using the correct password. We encourage you to send us a message through the online chat, with the amount of Fishbet Sweepstake Cash / Game Coins you believe are missing, and an approximate time that you believe this may have occurred so that we can take a look for you!',
         },
         {
           question: 'I haven’t received my bonus points.',
