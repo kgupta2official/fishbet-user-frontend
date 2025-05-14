@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
  import { useState } from 'react';
  import { useEffect } from 'react';
@@ -33,7 +33,8 @@ const useVerification = () => {
     const savedData = localStorage.getItem('verificationData');
     if (savedData) {
       const parsed = JSON.parse(savedData);
-      const { file, ...rest } = parsed;
+      const { ...rest } = parsed;
+      // const { file, ...rest } = parsed;
       reset(rest); // Populate form fields (excluding file)
     }
   }, [reset]);
@@ -56,13 +57,14 @@ const useVerification = () => {
     } catch (error) {
       setMessage('Something went wrong.');
       setStatus('error');
+      console.error(error)
       setShowToast(true);
     }
   };
 
-  const renderField = (label, name, type = 'text', rules = {}) => (
-    <div className=''>
-    <div className=" " key={name}>
+  const renderField = (label, name, type = "text", rules = {}) => (
+    <div >
+    <div key={name}>
      
       <div className="text-white text-[14px] font-bold">{label}</div>
       <Controller

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React from 'react';
 import useVerification from '../../hooks/useVerification';
@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const Verification = () => {
   const {
-    control,
+    // control,
     handleSubmit,
     onSubmit,
     renderField,
@@ -26,7 +26,7 @@ const Verification = () => {
       >
         {/* <h2 className="text-2xl  p-6 font-bold">User Registration</h2> */}
 
-        <div className='grid grid-cols-1  p-6 md:grid-cols-2 gap-6  '>
+        <div className="grid grid-cols-1  p-6 md:grid-cols-2 gap-6">
           {renderField('Username', 'username')}
           {renderField('First Name', 'firstName')}
           {renderField('Last Name', 'lastName')}
