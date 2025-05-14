@@ -57,12 +57,12 @@ const useVerification = () => {
     } catch (error) {
       setMessage('Something went wrong.');
       setStatus('error');
-      console.error(error)
+      console.error(error);
       setShowToast(true);
     }
   };
 
-  const renderField = (label, name, type = "text", rules = {}) => (
+  const renderField = (label, name, type ='text', rules = {}) => (
     <div >
     <div key={name}>
      
