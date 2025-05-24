@@ -21,8 +21,8 @@ export function StateProvider({ children }) {
     return newState;
   }, initialState);
 
- globalState = state;
- globalDispatch = dispatch;
+  globalState = state;
+  globalDispatch = dispatch;
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>
@@ -33,4 +33,4 @@ export function StateProvider({ children }) {
 
 // Custom hook for consuming the context
 export const useStateContext = () => useContext(StateContext);
-export const getStateAndDispatch = () => ({ getState:  () => globalState, dispatch: globalDispatch });
+export const getStateAndDispatch = () => ({ getState: () => globalState, dispatch: globalDispatch });

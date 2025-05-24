@@ -16,8 +16,6 @@ const useChatGroups = () => {
   const fetchGroupChat = async () => {
     try {
       const response = await getChatGroup();
-      console.log(response);
-
       setChatGroupData(response);
     } catch (error) {
       console.log(error?.message);

@@ -1,4 +1,5 @@
 import { KYCVerify } from '@/services/getRequests';
+import { createEvsVerification } from '@/services/postRequest';
 import { useStateContext } from '@/store';
 
 function useVerifyKyc() {
@@ -7,7 +8,7 @@ function useVerifyKyc() {
 } = useStateContext();
   const handleVerifyKYC = async () => {
     try {
-      const res = await KYCVerify();
+      const res = await createEvsVerification(user);
       if (window && res?.data?.verification?.url)
         window.location.href = res?.data?.verification?.url;
     } catch (error) {

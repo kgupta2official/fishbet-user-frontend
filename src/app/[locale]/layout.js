@@ -19,6 +19,7 @@ import './global.scss';
 import './global.css';
 import NextTopLoader from 'nextjs-toploader';
 import SocketProvider from './SocketProvider';
+import ClientLayoutWrapper from './ClientLayoutWrapper';
 // import { Toasters } from 'react-hot-toast';
 
 const geistSans = localFont({
@@ -46,6 +47,9 @@ export function generateStaticParams() {
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
   const { resources } = await initTranslations(locale, i18nNamespaces);
+  // --- Blocked route check ---
+  const isBlockedPage = typeof children?.type === 'function' && children.type.name === 'BlockedPage';
+  console.log("isBlockedPage-------" , isBlockedPage)
 
   return (
     <html
@@ -68,30 +72,35 @@ export default async function RootLayout({ children, params }) {
                 locale={locale}
                 resources={resources}
               >
-                {/* <LoginSignup /> */}
-                <SocketProvider>
-                  <SidebarProvider>
-                    <SidebarSection />
-                    <SidebarInset>
-                      <Header />
-                      <div className="h-[calc(100vh-121px)] md:h-[calc(100vh-63px)] w-full overflow-y-auto scrollbar-thin scrollable-Content-Home">
-                        <div className="w-full px-[4vw] py-4 bg-[hsl(var(--main-background))] ">
-                          <div className="max-w-[1200px] mx-auto">
-                            <NextTopLoader color="#fa114f" showSpinner={false} />
-                            {/* <Toasters /> */}
-                            {children}
+                <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+                {/* {!isBlockedPage ? (
+                  // Show only the blocked page content (no layout)
+                  <>{children}</>
+                ) : (
+                  // Full layout rendering
+                  <SocketProvider>
+                    <SidebarProvider>
+                      <SidebarSection />
+                      <SidebarInset>
+                        <Header />
+                        <div className="h-[calc(100vh-121px)] md:h-[calc(100vh-63px)] w-full overflow-y-auto scrollbar-thin scrollable-Content-Home">
+                          <div className="w-full px-[4vw] py-4 bg-[hsl(var(--main-background))] ">
+                            <div className="max-w-[1200px] mx-auto">
+                              <NextTopLoader color="#fa114f" showSpinner={false} />
+                              {children}
+                            </div>
                           </div>
+                          <FloatElements />
+                          <Footer />
                         </div>
-                        <FloatElements />
-                        <Footer />
-                      </div>
-                      <NavMobile />
-                    </SidebarInset>
-                    <ChatModule />
-                  </SidebarProvider>
-                </SocketProvider>
+                        <NavMobile />
+                      </SidebarInset>
+                      <ChatModule />
+                    </SidebarProvider>
+                  </SocketProvider>
+                )} */}
+                <Toaster />
               </TranslationsProvider>
-              <Toaster />
             </StateProvider>
           </Suspense>
         </main>

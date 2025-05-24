@@ -1,7 +1,7 @@
 export const TAB_CONTROLS = [
   { label: 'Verify Profile', value: 'profile' },
   { label: 'Email', value: 'email' },
-  { label: 'Verification', value:'verification'},
+  /* { label: 'Verification', value:'verification'}, */
   // { label: 'Two Factor', value: 'twoFactor' },
   { label: 'Password', value: 'password' },
   { label: 'Avatar', value: 'avatar' },
@@ -36,6 +36,14 @@ export const BASIC_INFO_FORM_CONTROLS = [
     placeholder: 'Last name',
     required: 'This field is required',
     // width: '300px',
+  },
+  {
+    name: 'phone',
+    label: 'Mobile Number',
+    type: 'input',
+    placeholder: 'Mobile Number',
+    required: 'This field is required',
+    // width: '400px',
   },
   {
     name: 'dateOfBirth',

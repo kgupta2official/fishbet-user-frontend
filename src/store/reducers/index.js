@@ -19,8 +19,6 @@ export const initialState = {
 
 // Define a reducer function
 export function reducer(state, action) {
-  console.log('state' , state);
-  console.log('action' , action);
   switch (action.type) {
     case 'SET_LEFT_PANEL':
       return { ...state, leftPanel: action.payload };

@@ -29,11 +29,14 @@ export const verifyForgotPassword = (data) =>
 export const awailFaucet = (payload) =>
   postRequest(`${API_URL}/faucet`, payload);
 
+export const createEvsVerification = (payload) =>
+  postRequest(`${API_URL}/assure-card`, payload);
+
 export const createTicket = (payload) =>
   postRequest(`${API_URL}/ticket`, payload);
 
-export const createVerification = (payload) =>
-  postRequest(`${API_URL}/verification/session`, payload);
+// export const createVerification = (payload) =>
+//   postRequest(`${API_URL}/verification/session`, payload);
 
 export const createTicketMessage = (payload) =>
   postRequest(`${API_URL}/ticket/message`, payload);

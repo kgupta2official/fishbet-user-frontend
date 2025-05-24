@@ -21,8 +21,7 @@ const useCms = () => {
       const response = await getCmsPageList();
       setCmsData(response?.data?.cmsDetails);
     } catch (err) {
-      console.log('data', err);
-      setCmsError(err.message);
+      setCmsError(err);
     } finally {
       setCmsLoading(false);
     }

@@ -16,6 +16,7 @@ const BasicInformation = () => {
       lastName: user?.lastName || '',
       dateOfBirth: user?.dateOfBirth || '',
       stateCode: user?.State?.stateCode || '', 
+      phone: user?.phone || '', 
     },
   });
 
@@ -63,6 +64,7 @@ const BasicInformation = () => {
       setValue('lastName', user?.lastName);
       setValue('dateOfBirth', user?.dateOfBirth);
       setValue('stateCode', user?.State?.stateCode || ''); 
+      setValue('phone', user?.phone || ''); 
     }
   }, [user, setValue]);
 

@@ -1,7 +1,7 @@
 'use client';
 
- import { useState } from 'react';
- import { useEffect } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { useForm, Controller } from 'react-hook-form';
 
@@ -20,12 +20,13 @@ const useVerification = () => {
   } = useForm({
     defaultValues: {
       username: '',
-      firstName: '',
-      lastName: '',
-      dob: '',
-      city: '',
-      stateCode: '',
-      file: null,
+      password: '',
+      customerReference: '',
+      phoneNumber: '',
+      scanMode: '',
+      requireConsumerPortrait: false,
+      documentType: '',
+      // file: null,
     },
   });
 
@@ -38,8 +39,8 @@ const useVerification = () => {
       reset(rest); // Populate form fields (excluding file)
     }
   }, [reset]);
-  
-  
+
+
 
   // const onSubmit = (data) => {
   //   console.log('Submitted data:', data);
@@ -47,9 +48,8 @@ const useVerification = () => {
   //   // Handle backend submission here
   //   reset(); // Optional: Reset form after submit
   // };
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     try {
-      console.log('Submitted data:', data);
       setMessage('Form submitted successfully!');
       setStatus('success');
       setShowToast(true);
@@ -62,35 +62,149 @@ const useVerification = () => {
     }
   };
 
-  const renderField = (label, name, type ='text', rules = {}) => (
-    <div >
-    <div key={name}>
-     
-      <div className="text-white text-[14px] font-bold">{label}</div>
-      <Controller
-        control={control}
-        name={name}
-        rules={{ required: `Please enter ${label.toLowerCase()}`, ...rules }}
-        render={({ field, fieldState }) => (
-          <>
-            <Input
-              {...field}
-              type={type}
-              className={`mt-1 ${
-                fieldState.error ? 'border-red-500' : 'border-gray-300'
-              }`}
-            />
-            {fieldState.error && (
-              <div className="text-red-500 text-sm mt-1">
-                {fieldState.error.message}
-              </div>
+  // const renderField = (label, name, type = 'text', rules = {}) => (
+  //   <div >
+  //     <div key={name}>
+  //       <div className="text-white text-[14px] font-bold">{label}</div>
+  //       <Controller
+  //         control={control}
+  //         name={name}
+  //         rules={{ required: `Please enter ${label.toLowerCase()}`, ...rules }}
+  //         render={({ field, fieldState }) => (
+  //           <>
+  //             <Input
+  //               {...field}
+  //               type={type}
+  //               className={`mt-1 ${fieldState.error ? 'border-red-500' : 'border-gray-300'
+  //                 }`}
+  //             />
+  //             {fieldState.error && (
+  //               <div className="text-red-500 text-sm mt-1">
+  //                 {fieldState.error.message}
+  //               </div>
+  //             )}
+  //           </>
+  //         )}
+  //       />
+  //     </div>
+  //   </div>
+  // );
+
+  // const renderField = (label, name, type = 'text', rules = {}) => (
+  //   <div>
+  //     <div key={name}>
+  //       <div className="text-white text-[14px] font-bold mb-1">{label}</div>
+  //       <Controller
+  //         control={control}
+  //         name={name}
+  //         rules={{
+  //           ...(type === 'checkbox'
+  //             ? {
+  //               validate: (value) =>
+  //                 value === true || `Please check ${label.toLowerCase()}`
+  //             }
+  //             : {
+  //               required: `Please enter ${label.toLowerCase()}`
+  //             }),
+  //           ...rules
+  //         }}
+  //         render={({ field, fieldState }) => (
+  //           <>
+  //             {type === 'checkbox' ? (
+  //               <>
+  //                 {/* <label className="flex items-center space-x-2"> */}
+  //                 <input
+  //                   type="checkbox"
+  //                   checked={field.value}
+  //                   onChange={(e) => field.onChange(e.target.checked)}
+  //                   className="w-4 h-4"
+  //                 />
+  //                 <span>{label}</span>
+
+  //                 {/* </label> */}
+  //               </>
+  //             ) : (
+  //               <Input
+  //                 {...field}
+  //                 type={type}
+  //                 className={`mt-1 ${fieldState.error ? 'border-red-500' : 'border-gray-300'
+  //                   }`}
+  //               />
+  //             )}
+  //             {fieldState.error && (
+  //               <div className="text-red-500 text-sm mt-1">
+  //                 {fieldState.error.message}
+  //               </div>
+  //             )}
+  //           </>
+  //         )}
+  //       />
+  //     </div>
+  //   </div>
+  // );
+
+
+  const renderField = (label, name, type = 'text', rules = {}) => {
+    const isCheckbox = type === 'checkbox';
+    const isRequirePortrait = name === 'requireConsumerPortrait';
+
+    return (
+      <div>
+        <div key={name}>
+          <div className="text-white text-[14px] font-bold mb-1">{label}</div>
+          <Controller
+            control={control}
+            name={name}
+            rules={{
+              ...(isCheckbox
+                ? {
+                  validate: (value) =>
+                    value === true || `Please check ${label.toLowerCase()}`
+                }
+                : {
+                  required: `Please enter ${label.toLowerCase()}`
+                }),
+              ...rules
+            }}
+            render={({ field, fieldState }) => (
+              <>
+                {isCheckbox ? (
+                  <label
+                    className={`flex items-center space-x-2 ${isRequirePortrait ? 'py-[14px] px-[16px] bg-gray-800 rounded-[16px] bg-[#333]' : ''
+                      }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={field.value}
+                      onChange={(e) => field.onChange(e.target.checked)}
+                      className={`w-4 h-4 accent-green-500 ${isRequirePortrait ? 'border border-white' : ''
+                        }`}
+                    />
+                    <span className="text-gray-300">{`${label} Check`}</span>
+                  </label>
+                ) : (
+                  <Input
+                    {...field}
+                    type={type}
+                    className={`mt-1 ${fieldState.error ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                  />
+                )}
+                {fieldState.error && (
+                  <div className="text-red-500 text-sm mt-1">
+                    {fieldState.error.message}
+                  </div>
+                )}
+              </>
             )}
-          </>
-        )}
-      />
-    </div>
-    </div>
-  );
+          />
+        </div>
+      </div>
+    );
+  };
+
+
+
 
   const renderFileUpload = (label, name) => (
     <div className="mb-4">
@@ -104,9 +218,8 @@ const useVerification = () => {
             <input
               type="file"
               onChange={(e) => field.onChange(e.target.files[0])}
-              className={`block mt-2 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 ${
-                fieldState.error ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`block mt-2 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 ${fieldState.error ? 'border-red-500' : 'border-gray-300'
+                }`}
             />
             {fieldState.error && (
               <div className="text-red-500 text-sm mt-1">
@@ -130,6 +243,8 @@ const useVerification = () => {
     setShowToast,
     message,
     status,
+    setMessage,
+    setStatus
   };
 };
 
@@ -274,9 +389,9 @@ export default useVerification;
 // import { useForm, Controller } from 'react-hook-form';
 
 // const useVerification = () => {
-  // const [showToast, setShowToast] = useState(false);
-  // const [message, setMessage] = useState('');
-  // const [status, setStatus] = useState('success'); // or 'error'
+// const [showToast, setShowToast] = useState(false);
+// const [message, setMessage] = useState('');
+// const [status, setStatus] = useState('success'); // or 'error'
 
 //   const {
 //     control,
@@ -285,19 +400,19 @@ export default useVerification;
 //     reset,
 //   } = useForm();
 
-  // const onSubmit = (data) => {
-  //   try {
-  //     console.log('Submitted data:', data);
-  //     setMessage('Form submitted successfully!');
-  //     setStatus('success');
-  //     setShowToast(true);
-  //     reset(); // Optional
-  //   } catch (error) {
-  //     setMessage('Something went wrong.');
-  //     setStatus('error');
-  //     setShowToast(true);
-  //   }
-  // };
+// const onSubmit = (data) => {
+//   try {
+//     console.log('Submitted data:', data);
+//     setMessage('Form submitted successfully!');
+//     setStatus('success');
+//     setShowToast(true);
+//     reset(); // Optional
+//   } catch (error) {
+//     setMessage('Something went wrong.');
+//     setStatus('error');
+//     setShowToast(true);
+//   }
+// };
 
 //   const renderField = (label, name, type = 'text', rules = {}) => (
 //     <div key={name}>
@@ -354,16 +469,16 @@ export default useVerification;
 //   );
 
 //   return {
-    // control,
-    // handleSubmit,
-    // onSubmit,
-    // renderField,
-    // renderFileUpload,
-    // errors,
-    // showToast,
-    // setShowToast,
-    // message,
-    // status,
+// control,
+// handleSubmit,
+// onSubmit,
+// renderField,
+// renderFileUpload,
+// errors,
+// showToast,
+// setShowToast,
+// message,
+// status,
 //   };
 // };
 

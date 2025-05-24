@@ -98,7 +98,7 @@ import useGetUserDetail from '@/common/hook/useGetUserDeatil';
 const COMPONENT_MAPPING = {
     profile: Profile,
     email: Email,
-    verification : Verification,
+    /* verification : Verification, */
     password: Password,
     bonusDrop: BonusDrop,
     twoFactor: TwoFactor,

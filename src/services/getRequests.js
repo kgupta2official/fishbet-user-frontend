@@ -35,6 +35,7 @@ export const getAllTransaction = (payload) =>
 export const getSiteDetails = (payload) =>
   getRequest(`${API_URL}/site-detail`, payload);
 
+
 export const getAllCasinoTransaction = (payload) =>
   getRequest(`${API_URL}/casino/transactions`, payload);
 
