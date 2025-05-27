@@ -78,7 +78,7 @@ const Verification = () => {
   const {
     handleSubmit,
     renderField,
-    renderFileUpload,
+    //renderFileUpload,
     showToast,
     setShowToast,
     message,
