@@ -83,7 +83,7 @@ import { TAB_CONTROLS } from '../constant';
 import { useState } from 'react';
 import Profile from './profile';
 import Email from './email';
-import Verification from './verification';
+//import Verification from './verification';
 import Password from './password';
 import BonusDrop from './bonus-drop';
 import TwoFactor from './two-factor';
