@@ -41,11 +41,7 @@
 //   const res = await fetch(`https://ipapi.co/${ip}/json/`);
 //   const geo = await res.json();
 
-// console.log("res--------------", res)
-// console.log("geo--------------", geo)
-
 //   const country = geo?.country;
-//   console.log("country--------------", country)
 //   if (BLOCKED_COUNTRIES.includes(country)) {
 //     const blockedUrl = request.nextUrl.clone();
 //     blockedUrl.pathname = '/blocked';
@@ -81,7 +77,6 @@
 
 // export async function middleware(request) {
 //   const devFallbackIP = '103.21.244.0'; // Change to simulate any country
-//     console.log("devFallbackIP:-----------------", devFallbackIP);
 //   const ip =
 //     request.ip ||
 //     request.headers.get('x-forwarded-for') ||
@@ -91,11 +86,7 @@
 //     const res = await fetch(`https://ipapi.co/${ip}/json/`);
 //     const geo = await res.json();
 
-// console.log("ip:-----------------", ip);
-// console.log("geo:----------------", geo);
-
 // const country = geo?.country;
-// console.log("country:----------------", country);
 
 //     if (country && BLOCKED_COUNTRIES.includes(country)) {
 //       const blockedUrl = request.nextUrl.clone();
@@ -144,12 +135,6 @@
 //     const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
 //     const geo = await geoRes.json();
 //     const country = geo?.country;
-
-//     console.log("geoRes:-----------------", geoRes);
-//     console.log("geo:----------------", geo);
-//     console.log("country:----------------", country);
-
-//     // Force block CA etc. everywhere except /blocked
 //     if (country && BLOCKED_COUNTRIES.includes(country)) {
 //       const pathname = request.nextUrl.pathname;
 
@@ -202,7 +187,6 @@ export async function middleware(request) {
   //   return NextResponse.next();
   // }
 
-  // --- Force fallback IP in development only ---
   let ip = request.headers.get('x-forwarded-for') || request.ip;
 
   if (process.env.NODE_ENV === 'development') {
@@ -212,11 +196,7 @@ export async function middleware(request) {
   try {
     const geoRes = await fetch(`https://ipwhois.app/json/${ip}`);
     const geo = await geoRes.json();
-
-    console.log("geo-----------"  , geo)
-
     const continent = geo?.continent;
-
 
     // if (continent && BLOCKED_COUNTRIES.includes(continent)) {
     //   const blockedUrl = request.nextUrl.clone();

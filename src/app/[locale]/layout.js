@@ -1,8 +1,8 @@
-import FloatElements from '@/components/FloatElements';
-import Footer from '@/components/footer/components';
-import NavMobile from '@/components/nav-mobile/components';
+// import FloatElements from '@/components/FloatElements';
+// import Footer from '@/components/footer/components';
+// import NavMobile from '@/components/nav-mobile/components';
 import TranslationsProvider from '@/components/TranslationProvider';
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+// import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
 import { StateProvider } from '@/store';
 import { dir } from 'i18next';
@@ -10,15 +10,15 @@ import localFont from 'next/font/local';
 import Head from 'next/head';
 import { Suspense } from 'react';
 import i18nConfig from '../../../i18nConfig';
-import Header from '../../components/Header/components';
-import SidebarSection from '../../components/SidebarSection';
+//import Header from '../../components/Header/components';
+//import SidebarSection from '../../components/SidebarSection';
 import initTranslations from '../i18n';
-import ChatModule from './@chat/page';
+//import ChatModule from './@chat/page';
 //import LoginSignup from './@login/page';
 import './global.scss';
 import './global.css';
-import NextTopLoader from 'nextjs-toploader';
-import SocketProvider from './SocketProvider';
+//import NextTopLoader from 'nextjs-toploader';
+//import SocketProvider from './SocketProvider';
 import ClientLayoutWrapper from './ClientLayoutWrapper';
 // import { Toasters } from 'react-hot-toast';
 
@@ -48,8 +48,7 @@ export default async function RootLayout({ children, params }) {
   const { locale } = await params;
   const { resources } = await initTranslations(locale, i18nNamespaces);
   // --- Blocked route check ---
-  const isBlockedPage = typeof children?.type === 'function' && children.type.name === 'BlockedPage';
-  console.log("isBlockedPage-------" , isBlockedPage)
+  //const isBlockedPage = typeof children?.type === 'function' && children.type.name === 'BlockedPage';
 
   return (
     <html

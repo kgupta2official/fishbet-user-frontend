@@ -10,6 +10,6 @@ const BlockedPage = () => {
                 </p>
             </div>
         </>
-    )
-}
-export default BlockedPage
+    );
+};
+export default BlockedPage;

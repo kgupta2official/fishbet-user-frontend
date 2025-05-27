@@ -1,4 +1,4 @@
-import { KYCVerify } from '@/services/getRequests';
+//import { KYCVerify } from '@/services/getRequests';
 import { createEvsVerification } from '@/services/postRequest';
 import { useStateContext } from '@/store';
 
