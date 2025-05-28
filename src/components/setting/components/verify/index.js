@@ -2,16 +2,19 @@ import { Button } from '@/components/ui/button';
 import useVerifyKyc from '../../hooks/useVerifyKyc';
 import { identification, successIdentity } from '@/assets/png';
 import Image from 'next/image';
-import { KYC_STATUS } from '../../constant';
+import { KYC_STATUS, TAB_CONTROLS } from '../../constant';
 import VerifyModal from '../../../setting/verifyModal/VerifyModal';
 import { useState } from 'react';
 import verifIcon from '../../../../../public/assets/check.png';
+// import { useRouter } from 'next/navigation';
 const Verify = () => {
+
+  // const router = useRouter()
   const [showModal, setShowModal] = useState(false);
-  const [verificationLink, setVerificationLink] = useState(null);
+  const [showVerifyNotice, setShowVerifyNotice] = useState(false);
   const { handleVerifyKYC, veriffStatus } = useVerifyKyc({
     onMissingPhone: () => setShowModal(true),
-    onDeferredLink: (link) => setVerificationLink(link),
+    onDeferredLink: () => setShowVerifyNotice(true),
   });
 
   return (
@@ -65,11 +68,19 @@ const Verify = () => {
       )}
       {showModal && (
         <VerifyModal
-          message="Please filling in your mobile number in verify your profile."
-          onClose={() => setShowModal(false)}
+          message="Please enter your mobile number to verify your profile and ensure account security. To update your mobile number in your verified profile, use the button below."
+          buttonLabel="Update Mobile Number"
+          onClose={() => {
+            const tabValue = TAB_CONTROLS.find(tab => tab.label === 'Verify Profile')?.value;
+            if (tabValue === 'profile') {
+              window.location.href = '/setting?active=profile';
+              setShowModal(false);
+            }
+          }}
+
         />
       )}
-      {verificationLink && (
+      {showVerifyNotice && (
         <VerifyModal
           message={
             <div className="flex flex-col items-center text-center px-6 py-4 max-w-md w-full">
@@ -86,7 +97,8 @@ const Verify = () => {
               </p>
             </div>
           }
-          onClose={() => setVerificationLink(null)}
+          buttonLabel="Close"
+          onClose={() => setShowVerifyNotice(null)}
         />
       )}
 
