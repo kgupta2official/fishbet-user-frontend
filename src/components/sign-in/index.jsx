@@ -345,19 +345,6 @@ const SignIn = () => {
       email: Yup.string().email('Invalid email address').required('Email is required'),
    });
 
-   // const handleForgotPasswordSubmit = async (values) => {
-   //    setLoading(true);
-   //    try {
-   //       await forgotPassword(values);
-   //       setLoading(false);
-   //       setIsForgotPassword(false);
-   //       alert('Password reset link sent to your email.');
-   //    } catch (error) {
-   //       setLoading(false);
-   //       alert(error.message || 'Failed to send reset link. Please try again.');
-   //    }
-   // };
-
    const handleForgotPasswordSubmit = async (values) => {
       setLoading(true);
       try {

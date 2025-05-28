@@ -3,9 +3,17 @@ import useVerifyKyc from '../../hooks/useVerifyKyc';
 import { identification, successIdentity } from '@/assets/png';
 import Image from 'next/image';
 import { KYC_STATUS } from '../../constant';
-
+import VerifyModal from '../../../setting/verifyModal/VerifyModal';
+import { useState } from 'react';
+import verifIcon from '../../../../../public/assets/check.png';
 const Verify = () => {
-  const { handleVerifyKYC, veriffStatus } = useVerifyKyc();
+  const [showModal, setShowModal] = useState(false);
+  const [verificationLink, setVerificationLink] = useState(null);
+  const { handleVerifyKYC, veriffStatus } = useVerifyKyc({
+    onMissingPhone: () => setShowModal(true),
+    onDeferredLink: (link) => setVerificationLink(link),
+  });
+
   return (
     <section>
       <div className="text-white text-[14px] font-bold">
@@ -55,6 +63,34 @@ const Verify = () => {
           </Button>
         </div>
       )}
+      {showModal && (
+        <VerifyModal
+          message="Please filling in your mobile number in verify your profile."
+          onClose={() => setShowModal(false)}
+        />
+      )}
+      {verificationLink && (
+        <VerifyModal
+          message={
+            <div className="flex flex-col items-center text-center px-6 py-4 max-w-md w-full">
+              <Image
+                src={verifIcon}
+                alt="Verification Icon"
+                className="w-16 h-16 mb-4"
+              />
+              <p className="text-base font-medium text-gray-800">
+                A verification link has been sent to your mobile number. Please complete the verification using your mobile device.
+              </p>
+              <p className="pt-2 text-sm font-normal text-gray-600">
+                Once completed, kindly wait for confirmation from our verification team. Thank you for your patience and cooperation.
+              </p>
+            </div>
+          }
+          onClose={() => setVerificationLink(null)}
+        />
+      )}
+
+
     </section>
   );
 };

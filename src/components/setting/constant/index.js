@@ -9,7 +9,7 @@ export const TAB_CONTROLS = [
   // { label: 'Ignored Users', value: 'ignoredUsers' },
   //   { label: 'Verify', value: 'verify' },
   { label: 'Bonus Drop', value: 'bonusDrop' },
-  { label:'Document Verification', value:'verify'},
+  { label: 'Document Verification', value: 'verify' },
   { label: 'Self Exclusion', value: 'responsibleGambling' },
 ];
 
@@ -37,13 +37,26 @@ export const BASIC_INFO_FORM_CONTROLS = [
     required: 'This field is required',
     // width: '300px',
   },
+  // {
+  //   name: 'phone',
+  //   label: 'Mobile Number',
+  //   type: 'input',
+  //   placeholder: 'Mobile Number',
+  //   required: 'This field is required',
+  //   // width: '400px',
+  // },
   {
     name: 'phone',
+    type: 'text',
     label: 'Mobile Number',
-    type: 'input',
-    placeholder: 'Mobile Number',
-    required: 'This field is required',
-    // width: '400px',
+    placeholder: 'Enter your Mobile number',
+    required: { value: true, message: 'Mobile number is required' },
+    pattern: {
+      value: /^[0-9]{10}$/,
+      message: 'Mobile number must be exactly 10 digits',
+    },
+    minLength: { value: 10, message: 'Mobile number must be 10 digits' },
+    maxLength: { value: 10, message: 'Mobile number must be 10 digits' },
   },
   {
     name: 'dateOfBirth',

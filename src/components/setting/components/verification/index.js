@@ -88,11 +88,22 @@ const Verification = () => {
   } = useVerification();
 
   const onSubmit = async (data) => {
+    console.log('phone-----', data);
     try {
       const formData = new FormData();
-      Object.entries(data).forEach(([key, value]) => {
+
+      const updatedData = {
+        ...data,
+        phoneNumber: `+1${data.phoneNumber}`,
+      };
+
+      Object.entries(updatedData).forEach(([key, value]) => {
         formData.append(key, value);
       });
+
+      // Object.entries(data).forEach(([key, value]) => {
+      //   formData.append(key, value);
+      // });
       await createEvsVerification(formData);
       setMessage('Verification successful');
       setStatus('success');

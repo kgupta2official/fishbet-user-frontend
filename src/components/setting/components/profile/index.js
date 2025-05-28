@@ -48,6 +48,7 @@ const Profile = () => {
               );
             }
 
+
             return (
               <Controller
                 key={item.name}
@@ -56,6 +57,36 @@ const Profile = () => {
                 rules={{ pattern, required }}
                 render={({ field, fieldState }) => {
                   const error = fieldState?.error;
+
+                  if (item.name === 'phone') {
+                    return (
+                      <div>
+                        <label className="text-white text-[14px] font-bold mb-1">{item.label}</label>
+                        <div className="flex items-center border rounded-[16px] border-[#0000] text-white bg-[#333] hover:bg-[#444] hover:border-[#4b5563] w-full sm:max-w-[70%] md:max-w-[100%]">
+                          <div className="flex items-center px-2 text-white my-auto">
+                            <span>+1</span>
+                            <span className="px-1">&#124;</span>
+                          </div>
+                          <input
+                            type="text"
+                            {...field}
+                            placeholder="Enter your phone number"
+                            maxLength={10}
+                            className={`flex-1 bg-transparent focus:outline-none focus:ring-0 text-white h-[48px] ${error ? 'border-red-500' : ''
+                              }`}
+                            onChange={(e) => {
+                              const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                              field.onChange(value);
+                            }}
+                            value={field.value}
+                          />
+                        </div>
+                        {error && (
+                          <div className="text-red-500 text-sm mt-1">{error.message}</div>
+                        )}
+                      </div>
+                    );
+                  }
                   return (
                     <div>
                       {!isCheckbox && (
@@ -70,9 +101,8 @@ const Profile = () => {
                             checked={field.value}
                             onCheckedChange={field.onChange}
                             {...field}
-                            className={`${
-                              error ? 'border-red-500' : ''
-                            } bg-transparent focus:ring-0 text-white`}
+                            className={`${error ? 'border-red-500' : ''
+                              } bg-transparent focus:ring-0 text-white`}
                           />
                         ) : isSelect ? (
                           <Component
@@ -81,17 +111,15 @@ const Profile = () => {
                             onValueChange={field.onChange}
                             {...field}
                             contentClassName="h-[280px]"
-                            className={`${
-                              error ? 'border-red-500' : ''
-                            } border-[rgb(var(--lb-blue-200))] text-white bg-transparent focus:ring-0 w-full sm:max-w-[70%] md:max-w-[100%]`}
+                            className={`${error ? 'border-red-500' : ''
+                              } border-[rgb(var(--lb-blue-200))] text-white bg-transparent focus:ring-0 w-full sm:max-w-[70%] md:max-w-[100%]`}
                           />
                         ) : (
                           <Component
                             placeholder={item.placeholder}
                             {...field}
-                            className={`${
-                              error ? 'border-red-500' : ''
-                            } border-[rgb(var(--lb-blue-200))] text-white bg-transparent focus:ring-0 w-full sm:max-w-[70%] md:max-w-[100%]`}
+                            className={`${error ? 'border-red-500' : ''
+                              } border-[rgb(var(--lb-blue-200))] text-white bg-transparent focus:ring-0 w-full sm:max-w-[70%] md:max-w-[100%]`}
                             {...(item.type === 'select' && { options })}
                           />
                         )}

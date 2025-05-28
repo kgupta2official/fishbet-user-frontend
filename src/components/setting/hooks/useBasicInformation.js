@@ -68,7 +68,7 @@ const BasicInformation = () => {
     }
   }, [user, setValue]);
 
-  return {
+  return {  
     control,
     handleSubmit,
     onSubmit,
@@ -80,6 +80,7 @@ const BasicInformation = () => {
     status,
     loading,
     formatedStateData,
+    phone: user?.phone || '',
   };
 };
 export default BasicInformation;

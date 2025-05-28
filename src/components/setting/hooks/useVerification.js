@@ -183,12 +183,37 @@ const useVerification = () => {
                     <span className="text-gray-300">{`${label} Check`}</span>
                   </label>
                 ) : (
-                  <Input
-                    {...field}
-                    type={type}
-                    className={`mt-1 ${fieldState.error ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                  />
+                  // <Input
+                  //   {...field}
+                  //   type={type}
+                  //   className={`mt-1 ${fieldState.error ? 'border-red-500' : 'border-gray-300'
+                  //     }`}
+                  // />
+
+                  <>{name === 'phoneNumber' ? (
+                    <div className="flex rounded overflow-hidden bg-white text-black">
+                      <span className="flex items-center px-3 bg-gray-200 text-black font-medium">+1</span>
+                      <Input
+                        {...field}
+                        type="tel"
+                        placeholder="Enter phone number"
+                        className={`flex-1 rounded-none border-l-0 ${fieldState.error ? 'border-red-500' : 'border-gray-300'}`}
+                        onChange={(e) => {
+                          // Strip non-numeric characters and update field
+                          const onlyNumbers = e.target.value.replace(/\D/g, '');
+                          field.onChange(onlyNumbers);
+                        }}
+                        value={field.value}
+                      />
+                    </div>
+                  ) : (
+                    <Input
+                      {...field}
+                      type={type}
+                      className={`mt-1 ${fieldState.error ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                  )}
+                  </>
                 )}
                 {fieldState.error && (
                   <div className="text-red-500 text-sm mt-1">
