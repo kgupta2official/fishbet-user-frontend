@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-const VerifyModal = ({ message, onClose  , buttonLabel = "Close"}) => {
+const VerifyModal = ({ message, onClose  , buttonLabel = 'Close'}) => {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
