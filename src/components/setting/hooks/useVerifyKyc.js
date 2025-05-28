@@ -32,8 +32,6 @@
 //     state: { user },
 //   } = useStateContext();
 
-//   console.log("user------->", user)
-
 //   const handleVerifyKYC = async () => {
 //     if (!user?.phone) {
 //       // Trigger modal or toast if phone is missing
@@ -81,11 +79,7 @@ function useVerifyKyc({ onMissingPhone, onDeferredLink }) {
 
     try {
       const res = await createEvsVerification(user);
-      console.log('res------->', res);
-
       const deferredLink = res?.data?.data?.deferredRequestLink;
-
-      // If a deferred link is provided, use it
       if (deferredLink) {
         if (typeof onDeferredLink === 'function') {
           onDeferredLink(deferredLink);

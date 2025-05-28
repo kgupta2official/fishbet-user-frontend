@@ -523,7 +523,6 @@
 //             setStep(2);
 //          } else {
 //             handleSubmit(values);
-//             console.log("values", values)
 //          }
 //       }
 //    };
@@ -871,8 +870,9 @@ const SignUp = () => {
             message: 'User signed up successfully!',
             status: 'success',
          });
-         router.push('/')
+         router.push('/');
       },
+
       onError: (errorMessage) => {
          setToastState({
             showToast: true,

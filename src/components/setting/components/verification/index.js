@@ -88,7 +88,6 @@ const Verification = () => {
   } = useVerification();
 
   const onSubmit = async (data) => {
-    console.log('phone-----', data);
     try {
       const formData = new FormData();
 

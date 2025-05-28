@@ -102,9 +102,6 @@ export default function CasinoSection({
 //   categoryName,
 //   casinoGames,
 // }) {
-//   console.log("categoryId>>>>>>>", categoryId);
-//   // console.log("categoryName>>>>>>>", categoryName);
-
 //   const [gameData, setGameData] = useState(casinoGames);
 //   const {
 //     emblaRef,
