@@ -177,7 +177,20 @@ import i18nConfig from '../i18nConfig';
 import { i18nRouter } from 'next-i18n-router';
 
 const SUPPORTED_LANGUAGES = ['en', 'fr'];
-const BLOCKED_COUNTRIES = ['Europe1'];
+// const BLOCKED_COUNTRIES = ['Europe1'];
+const BLOCKED_REGIONS = [
+  // 'Vaud',
+  'Connecticut',
+  'Delaware',
+  'Hawaii',
+  'Idaho',
+  'Louisiana',
+  'Michigan',
+  'Montana',
+  'Nevada',
+  'Washington',
+];
+
 
 export async function middleware(request) {
   const pathname = request.nextUrl.pathname;
@@ -196,7 +209,7 @@ export async function middleware(request) {
   try {
     const geoRes = await fetch(`https://ipwhois.app/json/${ip}`);
     const geo = await geoRes.json();
-    const continent = geo?.continent;
+    const region = geo?.region;
 
     // if (continent && BLOCKED_COUNTRIES.includes(continent)) {
     //   const blockedUrl = request.nextUrl.clone();
@@ -210,21 +223,21 @@ export async function middleware(request) {
     //   }
     // }
 
-if (continent && BLOCKED_COUNTRIES.includes(continent)) {
-    if (pathname !== '/blocked') {
-      const blockedUrl = request.nextUrl.clone();
-      blockedUrl.pathname = '/blocked';
-      return NextResponse.redirect(blockedUrl);
+    if (region && BLOCKED_REGIONS.includes(region)) {
+      if (pathname !== '/blocked') {
+        const blockedUrl = request.nextUrl.clone();
+        blockedUrl.pathname = '/blocked';
+        return NextResponse.redirect(blockedUrl);
+      } else {
+        return NextResponse.next();
+      }
     } else {
-      return NextResponse.next();
+      if (pathname === '/blocked') {
+        const allowedUrl = request.nextUrl.clone();
+        allowedUrl.pathname = '/';
+        return NextResponse.redirect(allowedUrl);
+      }
     }
-  } else {
-    if (pathname === '/blocked') {
-      const allowedUrl = request.nextUrl.clone();
-      allowedUrl.pathname = '/';
-      return NextResponse.redirect(allowedUrl);
-    }
-  }
   } catch (err) {
     console.error('Geo lookup failed:', err);
   }

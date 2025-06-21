@@ -11,8 +11,8 @@ const CmsDetails = () => {
   }, [cmsDetails, cmsLoading]);
   if (cmsLoading) return <CustomOrionStarLoading />;
   return (
-    <div className="p-5 bg-[hsl(var(--main-background))] ">
-      <h1 className="text-xl text-white mb-3 font-extrabold  ">
+    <div className="p-5 bg-[hsl(var(--main-background))]">
+      <h1 className="text-xl text-white mb-3 font-extrabold">
         {cmsDetails?.title?.EN}
       </h1>
       <div

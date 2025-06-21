@@ -1,20 +1,13 @@
 import { noDataTickit, storeBanner } from '@/assets/png';
 import { coins, usd } from '@/assets/svg';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import Image from 'next/image';
 import CustomCardSkeleton from '@/common/components/custom-card-skeleton';
 import { isEmpty } from '@/lib/utils';
 import useBuy from '../../hooks/useBuy';
+import ConfirmBuyPopupWrapper from '@/components/Stores/component/ConfirmBuyPopupWrapper';
 
-
-
-const Buy = ({setSelectedPackage,setActive}) => {
+const Buy = () => {
   const renderLoading = () => {
     return (
       <>
@@ -22,20 +15,21 @@ const Buy = ({setSelectedPackage,setActive}) => {
       </>
     );
   };
+
   const {
     buyPacakageData,
     buyPacakageLoading,
     t,
   } = useBuy();
-
   
   return (
     <div className="">
       <Image
         src={storeBanner}
         alt="store banner image"
-        className="my-4 w-[95%] mx-auto "
+        className="my-4 w-[95%] mx-auto"
       />
+
       
       {isEmpty(buyPacakageData) && !buyPacakageLoading ? (
         <div className="flex flex-col items-center mt-4 justify-center">
@@ -56,18 +50,15 @@ const Buy = ({setSelectedPackage,setActive}) => {
             {buyPacakageData?.map((item) => (
               <Card
                 key={item.id}
-                className="w-auto max-w-52 m-2 bg-[rgb(var(--lb-blue-900))] text-white border-none"
+                className="w-auto max-w-52 m-2 bg-[rgb(var(--lb-blue-600))] text-white border-none"
               >
-                <CardHeader className="flex flex-row items-center m-0 p-0 bg-blue-950 rounded-t-lg">
+                <CardHeader className="flex flex-row items-center m-0 p-0 bg-blue-900 rounded-t-lg">
                   <Image src={usd} alt="usd image" className="w-5 h-5 m-2" />
-                  <p className="text-sm">
-                    {' '}
-                    {`${item.scCoin} ${t('freeSsCash')}`}
-                  </p>
+                  <p className="text-sm">{`${item.scCoin} ${t('freeSsCash')}`}</p>
                 </CardHeader>
                 <CardContent className="m-0 p-0">
                   <Image
-                    src={item?.imageUrl || coins}
+                    src={coins}
                     alt={item?.label}
                     width={200}
                     height={200}
@@ -81,12 +72,13 @@ const Buy = ({setSelectedPackage,setActive}) => {
                   </p>
                 </CardContent>
                 <CardFooter className="m-0 p-0">
-                  <Button className="bg-green-300 hover:bg-green-400 w-screen m-3"
+                  <ConfirmBuyPopupWrapper item={item} />
+                  {/* <Button className="bg-green-300 hover:bg-green-400 w-screen m-3"
                           onClick={()=>{setSelectedPackage(item);
                                   setActive('confirmBuy');
                           }}>
                     <span className="text-black font-bold">{`$${item.amount}`}</span>
-                  </Button>
+                  </Button> */}
                 </CardFooter>
               </Card>
             ))}

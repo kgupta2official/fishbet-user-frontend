@@ -1040,18 +1040,17 @@ p {
 
 
 .styles_bannerTile__qPuS3-sign-in {
-    width: calc(100% - 12px);
+    /* width: calc(100% - 12px); */
+    width: calc(100% - 0px);
     scroll-snap-align: center;
     position: relative;
     margin-bottom: 20px;
 }
 
-.styles_bannerTile__qPuS3-sign-up {
+/* .styles_bannerTile__qPuS3-sign-up {
     width: calc(100% - 10px);
     scroll-snap-align: center;
-    /* position: relative;*/
-    /* margin-bottom: 20px;  */
-}
+} */
 
 .styles_bannerTile__qPuS3:first-child {
     margin-left: 6px;
@@ -1146,6 +1145,10 @@ p {
     max-width: 600px;
     margin: 0 auto;
     width: 100%;
+}
+
+.pt-\[5\%\] {
+    padding-top: 0% !important;
 }
 
 .RegisterPage_promoteBanners__utQbR {

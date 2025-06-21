@@ -35,6 +35,8 @@ export const createEvsVerification = (payload) =>
 export const createTicket = (payload) =>
   postRequest(`${API_URL}/ticket`, payload);
 
+
+
 // export const createVerification = (payload) =>
 //   postRequest(`${API_URL}/verification/session`, payload);
 
@@ -62,3 +64,12 @@ export const claimBonusDrop = (payload) =>
 
 export const createPayment = (payload) =>
   postRequest(`${API_URL}/payment/create-payment`, payload);
+
+
+//Payment
+
+export const cardPayments  = (payload) =>
+  postRequest(`${API_URL}/pay`, payload);
+
+export const cardPaymentsExisting   = (payload) =>
+  postRequest(`${API_URL}/ticket`, payload);

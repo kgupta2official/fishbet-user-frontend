@@ -69,6 +69,14 @@ import identification from './identification.png';
 import successIdentity from './success_identity.png';
 import instagramIcon from './instagram.png';
 import linkedinIcon from './linkedin.png';
+import usicon from './us.png';
+import googlei from './googlei.png';
+import googleA from './googleA.gif';
+import gpay from './gpay.png';
+import applepayss from './applepayss.png';
+import bank from './bank.png';
+import credit from './credit.png';
+import bitcoin from './bitcoin.png';
 export {
   logoImage,
   bannerone,
@@ -139,5 +147,13 @@ export {
   identification,
   successIdentity,
   linkedinIcon,
-  instagramIcon
+  instagramIcon,
+  bitcoin,
+  bank,
+  applepayss,
+  gpay,
+  credit,
+  googleA,
+  googlei,
+  usicon
 };

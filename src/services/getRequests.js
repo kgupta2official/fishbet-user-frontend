@@ -110,3 +110,9 @@ export const getPromotions = (payload) =>
 
 export const KYCVerify = (payload) =>
   getRequest(`${API_URL}/user/init-veriff-kyc`, payload);
+
+export const getAccount  = (payload) =>
+  getRequest(`${API_URL}/user/init-veriff-kyc`, payload);
+
+export const getsessionkey   = (payload) =>
+  getRequest(`${API_URL}/user/init-veriff-kyc`, payload);
