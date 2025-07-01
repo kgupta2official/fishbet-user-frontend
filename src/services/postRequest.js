@@ -69,7 +69,7 @@ export const createPayment = (payload) =>
 //Payment
 
 export const cardPayments  = (payload) =>
-  postRequest(`${API_URL}/pay`, payload);
+  postRequest(`${API_URL}/pay/payment-create`, payload);
 
 export const cardPaymentsExisting   = (payload) =>
   postRequest(`${API_URL}/ticket`, payload);
