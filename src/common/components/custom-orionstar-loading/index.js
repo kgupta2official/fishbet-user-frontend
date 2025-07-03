@@ -66,7 +66,7 @@
 'use client';
 
 import Image from 'next/image';
-import Logo from "../../../../public/assets/logoImage-removebg.png";
+import Logo from '../../../../public/assets/logoImage-removebg.png';
 
 export default function CustomOrionStarLoading({ progress }) {
   return (

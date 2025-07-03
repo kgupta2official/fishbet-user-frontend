@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { bitcoin, gpay, applepayss, credit } from '@/assets/png';
+import { bitcoin } from '@/assets/png';
 // import { useBankTransfer } from '../hooks/useBankTransfer';
 // import { useCoinflowCheckout } from '../hooks/useCoinflowCheckout';
 // import { getUserDetails } from '@/services/getRequests';
@@ -52,7 +52,7 @@ const ConfirmBuyPage = ({
   // const [processingPayment, setProcessingPayment] = useState(false);
   // const [paymentError, setPaymentError] = useState(null);
   // const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('new');
+  const [selectedOption, ] = useState('new');
 
   const paymentMethods = [
     //{ src: credit, alt: 'Credit Card', label: 'Credit Card', path: 'card' },
